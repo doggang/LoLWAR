@@ -15,30 +15,30 @@ const Pick = ()=>{
         </div>
 
         <div id="room">
-          <div>
-            <div>1팀</div>
-            <div>비어 있음</div>
-            <div>비어 있음</div>
-            <div>비어 있음</div>
-            <div>비어 있음</div>
-            <div>비어 있음</div>
+          <div className="roomTeamCover">
+            <div className="roomTeam">1팀</div>
+            <div className="summoner">비어 있음</div>
+            <div className="summoner">비어 있음</div>
+            <div className="summoner">비어 있음</div>
+            <div className="summoner">비어 있음</div>
+            <div className="summoner">비어 있음</div>
           </div>
 
-          <div>
-            <div>2팀</div>
-            <div>비어 있음</div>
-            <div>비어 있음</div>
-            <div>비어 있음</div>
-            <div>비어 있음</div>
-            <div>비어 있음</div>
+          <div className="roomTeamCover">
+            <div className="roomTeam">2팀</div>
+            <div className="summoner">비어 있음</div>
+            <div className="summoner">비어 있음</div>
+            <div className="summoner">비어 있음</div>
+            <div className="summoner">비어 있음</div>
+            <div className="summoner">비어 있음</div>
           </div>
         </div>
 
         <div id="introduce">
-          <div>초대 현황(0)</div>
-          <div>초대 내역이 없습니다.</div>
+          <div id="introduceTitle">사용 방법</div>
+          <div id="introduceHow">어쩌고 저쩌고 하시면 됩니다. 참 쉽죠 ?</div>
         </div>
-        <div>게임 시작</div>
+        <button className="start-button">밸런스 맞추기</button>
 
       
 
