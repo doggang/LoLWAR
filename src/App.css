@@ -151,6 +151,34 @@
 }*/
 /* Community */
 #community{
+  background-color: rgb(4,16,25);
   width: 320px;
   height: 1050px;
+}
+#comTitle{
+  display: flex;
+  padding: 15px;
+  width: calc(100%-30px);
+  height: 90px;
+  border-bottom: 1px solid rgba(252, 253, 224, 0.243);
+}
+#comTitleImg{
+  background-image: url("./assets/icon.jpg");
+  background-size: cover;
+  border-radius: 70%;
+  width: 85px;
+  height: 85px;
+}
+#comTitleStateCover{
+  width: calc(100%-85px);
+  margin: 20px 15px;
+}
+#comTitleName{
+  color: rgba(251, 251, 235, 0.721);
+font-size: 22px;
+}
+#comTitleState{
+  font-size: 16px;
+  color: #009F3F;
+  margin: 6px 2px;
 }
