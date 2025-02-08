@@ -151,7 +151,7 @@
 }*/
 /* Community */
 #community{
-  background-color: rgb(4,16,25);
+  background-color: rgb(5, 20, 31);
   width: 320px;
   height: 1050px;
 }
@@ -181,4 +181,55 @@ font-size: 21px;
   font-size: 16px;
   color: #009F3F;
   margin: 6px 0px;
+}
+.communityTab{
+  color: rgba(251, 251, 235, 0.928);
+  background-color: rgb(3, 10, 16);
+  width: calc(100%-40px);
+  height: 40px;
+  line-height: 40px;
+  padding: 0 20px;
+}
+.sumWrap{
+  display: flex;
+  justify-content:left;
+  padding: 13px 20px 3px 20px;
+  width: calc(100%-40px);
+}
+.sumTitleImg{
+  background-image: url("./assets/sumIcon.jpg");
+  background-size: cover;
+  border-radius: 70%;
+  width: 70px;
+  height: 70px;
+}
+.sumNameWrap{
+  width: 130px;
+  padding: 0 15px;
+}
+.sumName{
+  background-color: #1e252e;
+  color: white;
+  border: 2px solid #d4af37;
+  padding: 10px;
+  font-size: 16px;
+  height: 10px;
+  width: 150px;
+  border-radius: 6px;}
+
+.tierSelect {
+  background-color: #1e252e;
+  color: white;
+  border: 2px solid #d4af37;
+  padding: 0 10px;
+  font-size: 16px;
+  margin-top: 5px;
+  height: 30px;
+  width: 172px;
+  border-radius: 6px;
+}
+
+.tierOption {
+  background-color: #1e252e;
+  color: white;
 }
