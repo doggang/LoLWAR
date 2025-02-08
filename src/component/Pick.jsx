@@ -36,7 +36,8 @@ const Pick = ()=>{
 
         <div id="introduce">
           <div id="introduceTitle">사용 방법</div>
-          <div id="introduceHow">어쩌고 저쩌고 하시면 됩니다. 참 쉽죠 ?</div>
+          <div id="introduceHow">대충 우측 커뮤니티 섹션에서 닉네임, 티어와 포인트<br />추가하기.
+          <br /><br />마무리로 밸런스 맞추기. 참 쉽죠 ?</div>
         </div>
         <button className="start-button">밸런스 맞추기</button>
 

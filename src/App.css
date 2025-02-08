@@ -174,11 +174,11 @@
   margin: 20px 15px;
 }
 #comTitleName{
-  color: rgba(251, 251, 235, 0.721);
-font-size: 22px;
+  color: rgba(251, 251, 235, 0.928);
+font-size: 21px;
 }
 #comTitleState{
   font-size: 16px;
   color: #009F3F;
-  margin: 6px 2px;
+  margin: 6px 0px;
 }

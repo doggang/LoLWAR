@@ -5,6 +5,10 @@ import Community from './component/Community'
 
 function App() {
 
+  const [name, setName] = useState("");
+  const [tier, setTier] = useState("");
+  const [point, setPoint] = useState("");
+
   return (
     <div className='app'>
       <div className='background'>
