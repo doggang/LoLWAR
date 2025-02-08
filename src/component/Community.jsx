@@ -25,12 +25,15 @@ const Community = ({sumCount,setSumCount,name,setName,allTier, tierPoint})=>{
         </div>
       </div>
       <div>
-        <div className="communityTab">일반 ({sumCount}/10)</div>
+        <div className="communityTab">
+          <div>일반 ({sumCount}/10)</div>
+          {
+          sumCount==10 ? null : <button id="addBtn" onClick={onClickAdd}>소환사 추가</button>
+        }
+        </div>
         
         {sumState}
-        {
-          sumCount==10 ? null : <button onClick={onClickAdd}>추가하기</button>
-        }
+        
       </div>
     </community>
   );

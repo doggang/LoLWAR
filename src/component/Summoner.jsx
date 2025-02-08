@@ -1,7 +1,11 @@
+import { useState, useRef, useEffect } from 'react'
+
+
 const Summoner = ({sumCount,setSumCount,name,setName,allTier, tierPoint})=>{
     
-    const onClickAdd = (e)=>{
-
+    const onClickDel = (e)=>{
+        setSumCount(sumCount-1);
+        console.log(sumCount);
     }
     return(
         <summoner>
@@ -11,13 +15,15 @@ const Summoner = ({sumCount,setSumCount,name,setName,allTier, tierPoint})=>{
                     <input className="sumName" type="text" name="summonerName" id="" placeholder="이름"/>
                     <select className="tierSelect" name="" id="">
                     {
-                        allTier.map((tier)=>{
-                        return <option className="tierOption" value={tier}>{tier}</option>
+                        allTier.map((tier, index)=>{
+                        return <option className="tierOption" key={index} value={tier}>{tier}</option>
 
                         })
                     }
                     </select>
                 </div>
+                <button className="delBtn" onClick={onClickDel}>X</button>
+
             </div>
         </summoner>
     );

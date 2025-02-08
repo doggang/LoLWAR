@@ -183,6 +183,8 @@ font-size: 21px;
   margin: 6px 0px;
 }
 .communityTab{
+  display: flex;
+  justify-content: space-between;
   color: rgba(251, 251, 235, 0.928);
   background-color: rgb(3, 10, 16);
   width: calc(100%-40px);
@@ -190,11 +192,29 @@ font-size: 21px;
   line-height: 40px;
   padding: 0 20px;
 }
+#addBtn{
+  position: relative;
+  top: 3.5px;
+  background-color: #1e252e;
+  color: white;
+  border: 2px solid #d4af37;
+  font-size: 16px;
+  height: 33px;
+  width: 100px;
+  border-radius: 6px;
+}
+#addBtn:hover{
+  cursor: pointer;
+  background-color: #0f1217;
+  color: rgb(211, 211, 211);
+  border: 2px solid #7b6621;
+  
+}
 .sumWrap{
   display: flex;
   justify-content:left;
-  padding: 13px 20px 3px 20px;
-  width: calc(100%-40px);
+  padding: 13px 0px 3px 20px;
+  width: calc(100%-20px);
 }
 .sumTitleImg{
   background-image: url("./assets/sumIcon.jpg");
@@ -232,4 +252,20 @@ font-size: 21px;
 .tierOption {
   background-color: #1e252e;
   color: white;
+}
+.delBtn{
+  position: relative;
+  top: 1px;
+  font-size: 13px;
+  right: -32px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 3px;
+}
+.delBtn:hover{
+  cursor: pointer;
+  background-color: rgb(163, 163, 163);
+  border-radius: 3px;
+  border: none;
 }
