@@ -1,32 +1,25 @@
-import { useState, useRef, useEffect } from 'react'
+import { useEffect } from "react";
 
+const Summoner = ({ id, onClickDel, allTier, tierPoint }) => {
+  useEffect(() => {
+    console.log(`소환사 ${id} 생성됨`);
+  }, []);
 
-const Summoner = ({sumCount,setSumCount,name,setName,allTier, tierPoint})=>{
-    
-    const onClickDel = (e)=>{
-        setSumCount(sumCount-1);
-        console.log(sumCount);
-    }
-    return(
-        <summoner>
-            <div className="sumWrap">
-                <div className="sumTitleImg"></div>
-                <div className="sumNameWrap">
-                    <input className="sumName" type="text" name="summonerName" id="" placeholder="이름"/>
-                    <select className="tierSelect" name="" id="">
-                    {
-                        allTier.map((tier, index)=>{
-                        return <option className="tierOption" key={index} value={tier}>{tier}</option>
-
-                        })
-                    }
-                    </select>
-                </div>
-                <button className="delBtn" onClick={onClickDel}>X</button>
-
-            </div>
-        </summoner>
-    );
-}
+  return (
+    <div className="sumWrap">
+      <div className="sumTitleImg"></div>
+      <div className="sumNameWrap">
+        <input name="name" className="sumName" type="text" placeholder="이름" />
+        <select className="tierSelect">
+          {allTier.map((tier, index) => (
+            <option name="selectTier" key={index} value={tier}>{tier}</option>
+          ))}
+        </select>
+      </div>
+      {/* 삭제 버튼 클릭 시 해당 ID 전달 */}
+      <button className="delBtn" onClick={() => onClickDel(id)}>X</button>
+    </div>
+  );
+};
 
 export default Summoner;

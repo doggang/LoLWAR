@@ -1,4 +1,9 @@
-const Pick = ()=>{
+const Pick = (sumCount, tier)=>{
+
+  const onclickBalance = ()=>{
+    console.log(sumCount);
+  }
+
   return(
     <pick id="pick">
         
@@ -39,7 +44,9 @@ const Pick = ()=>{
           <div id="introduceHow">대충 우측 커뮤니티 섹션에서 닉네임, 티어와 포인트<br />추가하기.
           <br /><br />마무리로 밸런스 맞추기. 참 쉽죠 ?</div>
         </div>
-        <button className="start-button">밸런스 맞추기</button>
+        <button className="start-button" onClick={()=>{
+          onclickBalance();
+        }}>밸런스 맞추기</button>
 
       
 
