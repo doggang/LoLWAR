@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Summoner from "./Summoner";
 
-const Community = ({ sumCount, setSumCount, allTier, tierPoint }) => {
+const Community = ({ sumCount, setSumCount, allTier, tierPoint, selected, setSelected,handleSelect}) => {
   const [sumState, setSumState] = useState([]); // 배열 상태
 
   // 새로운 소환사 추가
@@ -41,7 +41,8 @@ const Community = ({ sumCount, setSumCount, allTier, tierPoint }) => {
             id={sum.id}
             onClickDel={onClickDel} 
             allTier={allTier} 
-            tierPoint={tierPoint} 
+            tierPoint={tierPoint}
+            selected={selected} setSelected={setSelected} handleSelect={handleSelect}
           />
         ))}
       </div>

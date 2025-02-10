@@ -1,6 +1,10 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
-const Summoner = ({ id, onClickDel, allTier, tierPoint }) => {
+
+const Summoner = ({ id, onClickDel, allTier, tierPoint, selected, handleSelect}) => {
+
+
+
   useEffect(() => {
     console.log(`소환사 ${id} 생성됨`);
   }, []);
@@ -10,10 +14,10 @@ const Summoner = ({ id, onClickDel, allTier, tierPoint }) => {
       <div className="sumTitleImg"></div>
       <div className="sumNameWrap">
         <input name="name" className="sumName" type="text" placeholder="이름" />
-        <select className="tierSelect">
-          {allTier.map((tier, index) => (
-            <option name="selectTier" key={index} value={tier}>{tier}</option>
-          ))}
+        <select className="tierSelect" onChange={handleSelect} value={selected}>
+          {allTier.map((tier, index) => {
+            return <option name="selectTier" key={index} value={tier}>{tier}</option>
+          })}
         </select>
       </div>
       {/* 삭제 버튼 클릭 시 해당 ID 전달 */}
