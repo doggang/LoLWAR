@@ -1,8 +1,4 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+현재 문제점 
+1. 소환사 추가 후 티어를 바꾸면 모든 소환사의 티어가 동일하게 바뀜. 2/11
+2. 소환사 티어에 따른 점수를 한 묶음으로 세팅하고 싶은데 모르겠음. 2/11
+3. 소환사 추가하고 입력한 정보를 토대로 밸런스 맞추기 버튼을 클릭시 비어있음 칸에 소환사 정보를 띄우게 하고 싶은데 모르겠음. ..

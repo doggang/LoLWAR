@@ -10,12 +10,14 @@ const Community = ({ sumCount, setSumCount, allTier, tierPoint, selected, setSel
       const newSummoner = { id: Date.now() }; // 고유 ID 생성
       setSumState([...sumState, newSummoner]);
       setSumCount(sumCount + 1);
+      console.log(sumCount);
     }
   };
 
   // 소환사 삭제
   const onClickDel = (id) => {
     setSumState(sumState.filter((sum) => sum.id !== id)); // 해당 ID 삭제
+    console.log(id);
     setSumCount(sumCount - 1);
   };
 

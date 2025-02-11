@@ -9,6 +9,13 @@ const Summoner = ({ id, onClickDel, allTier, tierPoint, selected, handleSelect})
     console.log(`소환사 ${id} 생성됨`);
   }, []);
 
+  const selectOption = ()=>{
+    const selectArr = [];
+    for(let i=0; i<35; i++){
+      console.log(tierPoint[i]);
+    }
+  }
+
   return (
     <div className="sumWrap">
       <div className="sumTitleImg"></div>
