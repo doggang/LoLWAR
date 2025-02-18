@@ -1,8 +1,11 @@
+import '../style/Pick.css';
+
 const Pick = ({summoner})=>{
 
   const onclickBalance = ()=>{
     console.log(summoner);
   }
+  
   return(
     <div id="pick">
         

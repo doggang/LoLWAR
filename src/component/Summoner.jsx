@@ -1,3 +1,4 @@
+import '../style/Summoner.css';
 import { useState, useRef } from "react";
 
 

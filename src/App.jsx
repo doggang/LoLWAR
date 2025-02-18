@@ -1,4 +1,4 @@
-import { useState, useRef} from 'react'
+import { useState, useRef, useEffect} from 'react'
 import './App.css'
 import Pick from './component/Pick'
 import Community from './component/Community'
@@ -27,11 +27,24 @@ function App() {
     setSummoner([newSummoner, ...summoner])
     console.log(summoner);
   }
+}
+    // 소환사 정보 Pick창에 출력(Read)
+  const onRead = ()=>{
+    summoner.map((newSummoner, index)=>{
+      return (
+        <div key={index}>
+          <div>{newSummoner.sumName}</div>
+          <div>{newSummoner.tier}</div>
+        </div>
+
+      )
+    })
   };
+
     // 소환사 정보 입력시 State 최신화(Update)
-    const onUpdate = (targetId, gameName, gameTier)=>{
-      setSummoner(summoner.map((newSummoner)=>(newSummoner.id === targetId)? {...newSummoner, sumName:gameName, tier:gameTier}:newSummoner));
-    }
+  const onUpdate = (targetId, gameName, gameTier)=>{
+    setSummoner(summoner.map((newSummoner)=>(newSummoner.id === targetId)? {...newSummoner, sumName:gameName, tier:gameTier}:newSummoner));
+  }
 
     // 소환사 삭제(Delete)
   const onDelete = (targetId)=>{
@@ -41,6 +54,37 @@ function App() {
     )
   }
 
+  // ---------------------------------------------------------------------------------------음악
+  useEffect(() => {
+    const audio = new Audio();
+    audio.src = './bgm.mp3';  // public 폴더의 파일을 직접 참조
+    audio.loop = true;
+  
+    const playAudio = async () => {
+      try {
+        await audio.play();
+        console.log("음악 재생 시작");
+      } catch (err) {
+        console.error("음악 재생 실패:", err);
+      }
+    };
+  
+    // 페이지 로드 후 사용자 상호작용이 있을 때 음악 재생
+    const handleUserInteraction = () => {
+      playAudio();
+      document.removeEventListener('click', handleUserInteraction);
+    };
+  
+    // 첫 번째 클릭 이벤트로 음악 재생
+    document.addEventListener('click', handleUserInteraction);
+  
+    return () => {
+      audio.pause();
+      audio.currentTime = 0;
+      document.removeEventListener('click', handleUserInteraction);
+    };
+  }, []);
+  // ---------------------------------------------------------------------------------------음악악
   return (
     <div className='app'>
       <div className='background'>

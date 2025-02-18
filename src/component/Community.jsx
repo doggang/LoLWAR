@@ -1,5 +1,6 @@
 import { useState,useRef } from "react";
-import Summoner from "./Summoner";
+import Summoner from '../component/Summoner';
+import '../style/Community.css';
 
 const Community = ({onCreate, onDelete, onUpdate, summoner, allTier, sumPeople}) => {
 
