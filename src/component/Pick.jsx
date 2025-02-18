@@ -1,11 +1,10 @@
-const Pick = (sumCount, tier)=>{
+const Pick = ({summoner})=>{
 
   const onclickBalance = ()=>{
-    console.log(sumCount);
+    console.log(summoner);
   }
-
   return(
-    <pick id="pick">
+    <div id="pick">
         
         <div id="roomTitle">
           <div id="roomTitleFirst">
@@ -50,7 +49,7 @@ const Pick = (sumCount, tier)=>{
 
       
 
-    </pick>
+    </div>
   );
 }
 
