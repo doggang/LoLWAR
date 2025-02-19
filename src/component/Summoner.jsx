@@ -1,5 +1,5 @@
 import '../style/Summoner.css';
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 
 const Summoner = ({id, sumName, tier, allTier, onDelete, onUpdate}) => {
@@ -8,19 +8,22 @@ const Summoner = ({id, sumName, tier, allTier, onDelete, onUpdate}) => {
   const [gameName, setGamename] = useState("");
   const nameChange = (e)=>{
     setGamename(e.target.value);
-    onUpdate(id, gameName, gameTier);
   }
 
   const [gameTier, setGametier] = useState("");
   const tierChange = (e)=>{
     setGametier(e.target.value);
-    onUpdate(id, gameName, gameTier);
   }
 
   const delClick = ()=>{
     onDelete(id);
   }
   
+  useEffect(()=>{
+    onUpdate(id, gameName, gameTier);
+    console.log(`닉네임 : ${gameName}, 게임티어 : ${gameTier}`);
+  },[gameName, gameTier])
+
   return (
     <div className="sumWrap">
       <div className="sumTitleImg"></div>

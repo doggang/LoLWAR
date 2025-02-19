@@ -1,11 +1,12 @@
+import { useState } from 'react';
 import '../style/Pick.css';
 
-const Pick = ({summoner})=>{
+const Pick = ({summoner, balanced})=>{
 
   const onclickBalance = ()=>{
-    console.log(summoner);
+    balanced();
   }
-  
+
   return(
     <div id="pick">
         
