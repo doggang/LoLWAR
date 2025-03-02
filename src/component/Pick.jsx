@@ -1,12 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../style/Pick.css';
 
-const Pick = ({summoner, balanced})=>{
+const Pick = ({summoner, aTeam, bTeam, balanced, allTier, tierPoint})=>{
 
   const onclickBalance = ()=>{
     balanced();
   }
-
+  
+  useEffect(()=>{
+    balanced();
+    console.log(summoner);
+  },)
+  
   return(
     <div id="pick">
         
@@ -25,27 +30,48 @@ const Pick = ({summoner, balanced})=>{
         <div id="room">
           <div className="roomTeamCover">
             <div className="roomTeam">1팀</div>
-            <div className="summoner">비어 있음</div>
-            <div className="summoner">비어 있음</div>
-            <div className="summoner">비어 있음</div>
-            <div className="summoner">비어 있음</div>
-            <div className="summoner">비어 있음</div>
+
+            {
+              aTeam.map((player,i)=>(
+                (player==0 || player==null) ? <div key={i} className="summoner">비어 있음</div> : 
+                <div key={i} className="realSummoner">
+                  <div className='sumInforWrap'>
+                    <div className='sumInforIcon'></div>
+                    <div>{player.sumName}</div>
+                  </div>
+                  <div>{allTier[player.tier]}</div>
+                </div> 
+              ))
+            }
+
           </div>
 
           <div className="roomTeamCover">
             <div className="roomTeam">2팀</div>
-            <div className="summoner">비어 있음</div>
-            <div className="summoner">비어 있음</div>
-            <div className="summoner">비어 있음</div>
-            <div className="summoner">비어 있음</div>
-            <div className="summoner">비어 있음</div>
+
+            {
+              bTeam.map((player,i)=>(
+                (player==0 || player==null) ? <div key={i} className="summoner">비어 있음</div> : 
+                <div key={i} className="realSummoner">
+                  <div className='sumInforWrap'>
+                    <div className='sumInforIcon'></div>
+                    <div>{player.sumName}</div>
+                  </div>
+                  <div>{allTier[player.tier]}</div>
+                </div> 
+              ))
+            }
+            
           </div>
         </div>
 
         <div id="introduce">
           <div id="introduceTitle">사용 방법</div>
-          <div id="introduceHow">대충 우측 커뮤니티 섹션에서 닉네임, 티어와 포인트<br />추가하기.
-          <br /><br />마무리로 밸런스 맞추기. 참 쉽죠 ?</div>
+          <div id="introduceHow">
+            우측 상단에 소환사 추가 버튼 클릭 후,<br />
+            이름, 티어 정보를 입력!<br />
+            화면 하단부에 밸런스 맞추기 버튼을 누르면 끝!
+          </div>
         </div>
         <button className="start-button" onClick={()=>{
           onclickBalance();

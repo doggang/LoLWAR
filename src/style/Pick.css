@@ -40,7 +40,7 @@
   height: 390px;
 }
 .roomTeamCover>div{
-  width: 625px;
+  width: 610px;
   padding: 0 0 0 15px;
   margin-right: 20px;
 }
@@ -51,6 +51,7 @@
   line-height: 65px;
 }
 .summoner{
+  padding-right: 15px !important;
   font-size: 20px;
   color: rgba(128, 128, 128, 0.557);
   border-bottom: 1px solid grey;
@@ -80,6 +81,7 @@
   color: rgba(251, 251, 235, 0.721);
   padding: 23px 10px;
   border-bottom: 1px solid rgba(252, 253, 224, 0.243);
+  line-height: 35px;
 }
 
 .start-button {
@@ -110,4 +112,28 @@
 .start-button:active {
   background: linear-gradient(180deg, #152236 0%, #0F192A 100%);
   transform: scale(0.95);
+}
+
+.realSummoner{
+  padding-right: 15px !important;
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  color: #A09B8C;
+  border-bottom: 1px solid grey;
+  line-height: 65px;
+  height: 64px;
+}
+
+.sumInforWrap{
+  display: flex;
+}
+
+.sumInforIcon{
+  margin: 10px 10px 10px 0;
+  background-image: url('../assets/sumIcon.jpg');
+  border-radius: 100%;
+  background-size: cover;
+  width: 45px;
+  height: 45px;
 }

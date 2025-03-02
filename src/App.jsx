@@ -7,14 +7,25 @@ function App() {
 
  // 
 
-  const allTier = ["iron4", "iron3", "iron2", "iron1", "bronze4", "bronze3", "bronze2", "bronze1", "silver4", "silver3", "silver2", "silver1", "gold4", "gold3", "gold2", "gold1", "platinum4", "platinum3", "platinum2", "platinum1", "emerald4", "emerald3","emerald2", "emerald1", "diamond4", "diamond3", "diamond2", "diamond1", "master0-149", "master150-299", "master300-449", "master450-599", "master600-749", "master750-899", "master900over", ];
+  const allTier = 
+  [
+    "아이언 IV", "아이언 III", "아이언 II", "아이언 I", 
+    "브론즈 IV", "브론즈 III", "브론즈 II", "브론즈 I", 
+    "실버 IV", "실버 III", "실버 II", "실버 I", 
+    "골드 IV", "골드 III", "골드 II", "골드 I", 
+    "플래티넘 IV", "플래티넘 III", "플래티넘 II", "플래티넘 I", 
+    "에메랄드 IV", "에메랄드 III","에메랄드 II", "에메랄드 I", 
+    "다이아몬드 IV", "다이아몬드 III", "다이아몬드 II", "다이아몬드 I", 
+    "마스터 0-149", "마스터 150-299", "마스터 300-449", "마스터 450-599", "마스터 600-749", "마스터 750-899", "마스터 900이상"
+  ];
   const tierPoint = [1,2,3,4, 5,6,7,8, 9,10,11,12, 13,15,16,17 ,17,18,19,21 ,22,23,24,26 ,28,30,34,37 ,40,43,46,48, 50,52,54];
   
   
   const idRef = useRef(0); // 각 Summoner의 id
   const [sumPeople, setSumPeople] = useState(0); //community 창 속 소환사의 수
   const [summoner, setSummoner] = useState([]); // 소환사 정보 객체
-
+  const [aTeam, setATeam] = useState([0,0,0,0,0]);
+  const [bTeam, setBTeam] = useState([0,0,0,0,0]);
 
     // 새로운 소환사 추가함수(Create)
   const onCreate = ()=>{
@@ -23,17 +34,37 @@ function App() {
       const newSummoner={
         id:idRef.current++,
         sumName:"",
-        tier:0
+        tier:1
       };
     setSummoner([newSummoner, ...summoner])
-    console.log(summoner);
   }
 }
     // 소환사 정보 Pick창에 출력(Read)
     // 소환사의 티어로 내림차순
+    // 이 웹사이트의 핵심 서비스 => 티어를 바탕으로 밸런스있게 짜주는 역할
   const balanced = ()=>{
     setSummoner(prevSummoners => [...prevSummoners].sort((a, b) => b.tier - a.tier));
-    console.log(summoner);
+    let newATeam = [];
+    let newBTeam = [];
+    for(let i=0; i<summoner.length; i++){
+      if(i%2 === 0){
+        newATeam.push(summoner[i]);
+      }else{
+        newBTeam.push(summoner[i]);
+      }
+    }
+    if(newATeam.length!==5){
+      for(let i=newATeam.length; i<5; i++){
+        newATeam.push(0);
+      }
+    }
+    if(newBTeam.length!==5){
+      for(let i=newBTeam.length; i<5; i++){
+        newBTeam.push(0);
+      }
+    }
+    setATeam(newATeam);
+    setBTeam(newBTeam);
 
   };
 
@@ -87,7 +118,11 @@ function App() {
         <Pick 
           summoner={summoner}
           sumPeople={sumPeople}
+          aTeam={aTeam}
+          bTeam={bTeam}
           balanced={balanced}
+          allTier={allTier}
+          tierPoint={tierPoint}
         />
         <Community
           summoner={summoner}

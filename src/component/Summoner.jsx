@@ -2,7 +2,7 @@ import '../style/Summoner.css';
 import { useState, useRef, useEffect } from "react";
 
 
-const Summoner = ({id, sumName, tier, allTier, onDelete, onUpdate}) => {
+const Summoner = ({id, sumName, tier, allTier, tierPoint, onDelete, onUpdate}) => {
 
 
   const [gameName, setGamename] = useState("");
@@ -21,7 +21,7 @@ const Summoner = ({id, sumName, tier, allTier, onDelete, onUpdate}) => {
   
   useEffect(()=>{
     onUpdate(id, gameName, gameTier);
-    console.log(`닉네임 : ${gameName}, 게임티어 : ${gameTier}`);
+    console.log(sumName, tier);
   },[gameName, gameTier])
 
   return (
@@ -32,7 +32,7 @@ const Summoner = ({id, sumName, tier, allTier, onDelete, onUpdate}) => {
         <select className="tierSelect" onChange={tierChange} >
           {
             allTier.map((alltier, index)=>{
-              return <option key={index} name="selectTier" value={index}>{alltier}</option>
+              return <option key={index} name="selectTier" value={index} >{alltier}</option>
             })
           }
         </select>
