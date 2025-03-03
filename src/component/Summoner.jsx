@@ -2,15 +2,15 @@ import '../style/Summoner.css';
 import { useState, useRef, useEffect } from "react";
 
 
-const Summoner = ({id, sumName, tier, allTier, tierPoint, onDelete, onUpdate}) => {
+const Summoner = ({id, sumName, tier, allTier, tierPoint, onDelete, onUpdate, balanced}) => {
 
 
-  const [gameName, setGamename] = useState("");
-  const nameChange = (e)=>{
+  const [gameName, setGamename] = useState(sumName || "");
+    const nameChange = (e)=>{
     setGamename(e.target.value);
   }
 
-  const [gameTier, setGametier] = useState("");
+  const [gameTier, setGametier] = useState(tier || 0);
   const tierChange = (e)=>{
     setGametier(e.target.value);
   }

@@ -2,7 +2,7 @@ import { useState,useRef } from "react";
 import Summoner from '../component/Summoner';
 import '../style/Community.css';
 
-const Community = ({onCreate, onDelete, onUpdate, summoner, allTier, sumPeople}) => {
+const Community = ({onCreate, onDelete, onUpdate, summoner, allTier, sumPeople, balanced}) => {
 
   return (
     <div id="community">
@@ -26,6 +26,7 @@ const Community = ({onCreate, onDelete, onUpdate, summoner, allTier, sumPeople})
             allTier={allTier} 
             onDelete={onDelete}
             onUpdate={onUpdate}
+            balanced={balanced}
             />
           })
         }

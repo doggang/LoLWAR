@@ -21,65 +21,85 @@ function App() {
   const tierPoint = [1,2,3,4, 5,6,7,8, 9,10,11,12, 13,15,16,17 ,17,18,19,21 ,22,23,24,26 ,28,30,34,37 ,40,43,46,48, 50,52,54];
   
   
+  
   const idRef = useRef(0); // 각 Summoner의 id
   const [sumPeople, setSumPeople] = useState(0); //community 창 속 소환사의 수
-  const [summoner, setSummoner] = useState([]); // 소환사 정보 객체
-  const [aTeam, setATeam] = useState([0,0,0,0,0]);
-  const [bTeam, setBTeam] = useState([0,0,0,0,0]);
-
+  const [summoner, setSummoner] = useState([]); // 소환사 정보 객체(community에 나오는 정보)
+  const [settingSummoner, setSettingSummoner] = useState([]); // 소환사 정보 객체(이 state를 이용하여 ateam, bteam 밸런스 맞춤)
+  const [aTeam, setATeam] = useState([0,0,0,0,0]); //추가된 소환사 A팀 정보
+  const [bTeam, setBTeam] = useState([0,0,0,0,0]); //추가된 소환사 B팀 정보
+  const [settingATeam, setSettingATeam] = useState([0,0,0,0,0]); //밸런스가 맞춰진 A팀 정보(pick창에 나옴)
+  const [settingBTeam, setSettingBTeam] = useState([0,0,0,0,0]); //밸런스가 맞춰진 A팀 정보(pick창에 나옴)
+  
+  
     // 새로운 소환사 추가함수(Create)
-  const onCreate = ()=>{
-    if(sumPeople<10){
-      setSumPeople(sumPeople+1);
-      const newSummoner={
-        id:idRef.current++,
-        sumName:"",
-        tier:1
-      };
-    setSummoner([newSummoner, ...summoner])
-  }
-}
+    const onCreate = () => {
+      if (sumPeople < 10) {
+        setSumPeople(prevSumPeople => prevSumPeople + 1);
+        const newSummoner = {
+          id: idRef.current++,
+          sumName: "",
+          tier: 0
+        };
+        setSummoner(prevSummoner => [newSummoner, ...prevSummoner]);
+      }
+      console.log("소환사 추가");
+    };
     // 소환사 정보 Pick창에 출력(Read)
     // 소환사의 티어로 내림차순
     // 이 웹사이트의 핵심 서비스 => 티어를 바탕으로 밸런스있게 짜주는 역할
-  const balanced = ()=>{
-    setSummoner(prevSummoners => [...prevSummoners].sort((a, b) => b.tier - a.tier));
-    let newATeam = [];
-    let newBTeam = [];
-    for(let i=0; i<summoner.length; i++){
-      if(i%2 === 0){
-        newATeam.push(summoner[i]);
-      }else{
-        newBTeam.push(summoner[i]);
+    const balanced = () => {
+      // 기존 summoner 배열을 직접 복제해서 작업
+      const sortedSummoners = [...summoner].sort((a, b) => b.tier - a.tier);
+      setSettingSummoner(sortedSummoners);
+      
+      let newATeam = [];
+      let newBTeam = [];
+      
+      // 정렬된 배열을 직접 사용하여 팀 구성
+      for(let i = 0; i < sortedSummoners.length; i++) {
+        if(i % 2 === 0) {
+          newATeam.push(sortedSummoners[i]);
+        } else {
+          newBTeam.push(sortedSummoners[i]);
+        }
       }
-    }
-    if(newATeam.length!==5){
-      for(let i=newATeam.length; i<5; i++){
+      
+      // 팀 멤버가 5명이 안 되면 빈 자리 채우기
+      while(newATeam.length < 5) {
         newATeam.push(0);
       }
-    }
-    if(newBTeam.length!==5){
-      for(let i=newBTeam.length; i<5; i++){
+      
+      while(newBTeam.length < 5) {
         newBTeam.push(0);
       }
-    }
-    setATeam(newATeam);
-    setBTeam(newBTeam);
-
-  };
+      
+      setATeam(newATeam);
+      setBTeam(newBTeam);
+    };
 
     // 소환사 정보 입력시 State 최신화(Update)
-  const onUpdate = (targetId, gameName, gameTier)=>{
-    setSummoner(summoner.map((newSummoner)=>(newSummoner.id === targetId)? {...newSummoner, sumName:gameName, tier:gameTier}:newSummoner));
-  }
+    const onUpdate = (targetId, gameName, gameTier) => {
+      setSummoner(prevSummoner =>
+        prevSummoner.map(newSummoner =>
+          newSummoner.id === targetId
+            ? { ...newSummoner, sumName: gameName, tier: gameTier }
+            : newSummoner
+        )
+      );
+    };
 
     // 소환사 삭제(Delete)
-  const onDelete = (targetId)=>{
-    setSumPeople(sumPeople-1);
-    setSummoner(
-      summoner.filter((sumInfor)=>targetId!==sumInfor.id)
-    )
-  }
+    const onDelete = (targetId) => {
+      setSumPeople(prevSumPeople => prevSumPeople - 1);
+      setSummoner(prevSummoner =>
+        prevSummoner.filter(sumInfor => targetId !== sumInfor.id)
+      );
+    };
+
+    useEffect(() => {
+      balanced();
+    }, [summoner])
 
   // ---------------------------------------------------------------------------------------음악
   useEffect(() => {
@@ -111,7 +131,7 @@ function App() {
       document.removeEventListener('click', handleUserInteraction);
     };
   }, []);
-  // ---------------------------------------------------------------------------------------음악악
+  // ---------------------------------------------------------------------------------------음악
   return (
     <div className='app'>
       <div className='background'>
@@ -123,6 +143,10 @@ function App() {
           balanced={balanced}
           allTier={allTier}
           tierPoint={tierPoint}
+          settingATeam={settingATeam}
+          settingBTeam = {settingBTeam}
+          setSettingATeam={setSettingATeam}
+          setSettingBTeam={setSettingBTeam}
         />
         <Community
           summoner={summoner}
@@ -131,6 +155,7 @@ function App() {
           allTier={allTier}
           sumPeople={sumPeople}
           onUpdate={onUpdate}
+          balanced={balanced}
         />
       </div>
     </div>

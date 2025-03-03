@@ -1,16 +1,18 @@
 import { useEffect, useState } from 'react';
 import '../style/Pick.css';
 
-const Pick = ({summoner, aTeam, bTeam, balanced, allTier, tierPoint})=>{
+const Pick = ({summoner, aTeam, bTeam, balanced, allTier, tierPoint, settingATeam, settingBTeam, setSettingATeam, setSettingBTeam})=>{
 
-  const onclickBalance = ()=>{
+  const onclickBalance = () => {
+    // 먼저 최신 데이터로 밸런스 계산
     balanced();
-  }
+    // 그 후 결과를 설정
+    setTimeout(() => {
+      setSettingATeam(aTeam);
+      setSettingBTeam(bTeam);
+    }, 0);
+  };
   
-  useEffect(()=>{
-    balanced();
-    console.log(summoner);
-  },)
   
   return(
     <div id="pick">
@@ -32,7 +34,7 @@ const Pick = ({summoner, aTeam, bTeam, balanced, allTier, tierPoint})=>{
             <div className="roomTeam">1팀</div>
 
             {
-              aTeam.map((player,i)=>(
+              settingATeam.map((player,i)=>(
                 (player==0 || player==null) ? <div key={i} className="summoner">비어 있음</div> : 
                 <div key={i} className="realSummoner">
                   <div className='sumInforWrap'>
@@ -50,7 +52,7 @@ const Pick = ({summoner, aTeam, bTeam, balanced, allTier, tierPoint})=>{
             <div className="roomTeam">2팀</div>
 
             {
-              bTeam.map((player,i)=>(
+              settingBTeam.map((player,i)=>(
                 (player==0 || player==null) ? <div key={i} className="summoner">비어 있음</div> : 
                 <div key={i} className="realSummoner">
                   <div className='sumInforWrap'>
