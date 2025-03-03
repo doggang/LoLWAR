@@ -48,35 +48,45 @@ function App() {
     // 소환사 정보 Pick창에 출력(Read)
     // 소환사의 티어로 내림차순
     // 이 웹사이트의 핵심 서비스 => 티어를 바탕으로 밸런스있게 짜주는 역할
-    const balanced = () => {
-      // 기존 summoner 배열을 직접 복제해서 작업
-      const sortedSummoners = [...summoner].sort((a, b) => b.tier - a.tier);
-      setSettingSummoner(sortedSummoners);
-      
-      let newATeam = [];
-      let newBTeam = [];
-      
-      // 정렬된 배열을 직접 사용하여 팀 구성
-      for(let i = 0; i < sortedSummoners.length; i++) {
-        if(i % 2 === 0) {
-          newATeam.push(sortedSummoners[i]);
-        } else {
-          newBTeam.push(sortedSummoners[i]);
-        }
+    // 소환사 정보 Pick창에 출력(Read)
+  // 소환사의 티어로 내림차순
+  // 이 웹사이트의 핵심 서비스 => 티어를 바탕으로 밸런스있게 짜주는 역할
+  const balanced = () => {
+   
+
+    // 기존 summoner 배열을 티어 포인트로 정렬
+    const sortedSummoners = [...summoner].sort((a, b) => b.tier - a.tier);
+  
+    let newATeam = [];
+    let newBTeam = [];
+    let aTeamPoints = 0;
+    let bTeamPoints = 0;
+  
+    sortedSummoners.forEach(summoner => {
+      const tierValue = tierPoint[summoner.tier];
+  
+      // 티어 포인트의 합계가 적은 팀에 소환사를 배정
+      if (newATeam.length < 5 && (aTeamPoints <= bTeamPoints || newBTeam.length >= 5)) {
+        newATeam.push(summoner);
+        aTeamPoints += tierValue;
+      } else if (newBTeam.length < 5) {
+        newBTeam.push(summoner);
+        bTeamPoints += tierValue;
       }
-      
-      // 팀 멤버가 5명이 안 되면 빈 자리 채우기
-      while(newATeam.length < 5) {
-        newATeam.push(0);
-      }
-      
-      while(newBTeam.length < 5) {
-        newBTeam.push(0);
-      }
-      
-      setATeam(newATeam);
-      setBTeam(newBTeam);
-    };
+    });
+    
+    // 팀 멤버가 5명이 안 되면 빈 자리 채우기
+    while(newATeam.length < 5) {
+      newATeam.push(0);
+    }
+    
+    while(newBTeam.length < 5) {
+      newBTeam.push(0);
+    }
+    
+    setATeam(newATeam);
+    setBTeam(newBTeam);
+  };
 
     // 소환사 정보 입력시 State 최신화(Update)
     const onUpdate = (targetId, gameName, gameTier) => {
