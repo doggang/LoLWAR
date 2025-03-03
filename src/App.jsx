@@ -32,27 +32,22 @@ function App() {
   const [settingBTeam, setSettingBTeam] = useState([0,0,0,0,0]); //밸런스가 맞춰진 A팀 정보(pick창에 나옴)
   
   
-    // 새로운 소환사 추가함수(Create)
-    const onCreate = () => {
-      if (sumPeople < 10) {
-        setSumPeople(prevSumPeople => prevSumPeople + 1);
-        const newSummoner = {
-          id: idRef.current++,
-          sumName: "",
-          tier: 0
-        };
-        setSummoner(prevSummoner => [newSummoner, ...prevSummoner]);
-      }
-      console.log("소환사 추가");
-    };
-    // 소환사 정보 Pick창에 출력(Read)
-    // 소환사의 티어로 내림차순
-    // 이 웹사이트의 핵심 서비스 => 티어를 바탕으로 밸런스있게 짜주는 역할
-    // 소환사 정보 Pick창에 출력(Read)
-  // 소환사의 티어로 내림차순
+  // 새로운 소환사 추가함수(Create)
+  const onCreate = () => {
+    if (sumPeople < 10) {
+      setSumPeople(prevSumPeople => prevSumPeople + 1);
+      const newSummoner = {
+        id: idRef.current++,
+        sumName: "",
+        tier: 0
+      };
+      setSummoner(prevSummoner => [newSummoner, ...prevSummoner]);
+    }
+    console.log("소환사 추가");
+  };
+  // 소환사 정보 Pick창에 출력(Read)
   // 이 웹사이트의 핵심 서비스 => 티어를 바탕으로 밸런스있게 짜주는 역할
   const balanced = () => {
-   
 
     // 기존 summoner 배열을 티어 포인트로 정렬
     const sortedSummoners = [...summoner].sort((a, b) => b.tier - a.tier);
@@ -88,28 +83,28 @@ function App() {
     setBTeam(newBTeam);
   };
 
-    // 소환사 정보 입력시 State 최신화(Update)
-    const onUpdate = (targetId, gameName, gameTier) => {
-      setSummoner(prevSummoner =>
-        prevSummoner.map(newSummoner =>
-          newSummoner.id === targetId
-            ? { ...newSummoner, sumName: gameName, tier: gameTier }
-            : newSummoner
-        )
-      );
-    };
+  // 소환사 정보 입력시 State 최신화(Update)
+  const onUpdate = (targetId, gameName, gameTier) => {
+    setSummoner(prevSummoner =>
+      prevSummoner.map(newSummoner =>
+        newSummoner.id === targetId
+          ? { ...newSummoner, sumName: gameName, tier: gameTier }
+          : newSummoner
+      )
+    );
+  };
 
-    // 소환사 삭제(Delete)
-    const onDelete = (targetId) => {
-      setSumPeople(prevSumPeople => prevSumPeople - 1);
-      setSummoner(prevSummoner =>
-        prevSummoner.filter(sumInfor => targetId !== sumInfor.id)
-      );
-    };
+  // 소환사 삭제(Delete)
+  const onDelete = (targetId) => {
+    setSumPeople(prevSumPeople => prevSumPeople - 1);
+    setSummoner(prevSummoner =>
+      prevSummoner.filter(sumInfor => targetId !== sumInfor.id)
+    );
+  };
 
-    useEffect(() => {
-      balanced();
-    }, [summoner])
+  useEffect(() => {
+    balanced();
+  }, [summoner])
 
   // ---------------------------------------------------------------------------------------음악
   useEffect(() => {
