@@ -21,7 +21,6 @@ const Summoner = ({id, sumName, tier, allTier, tierPoint, onDelete, onUpdate, ba
   
   useEffect(()=>{
     onUpdate(id, gameName, gameTier);
-    console.log(sumName, tier);
   },[gameName, gameTier])
 
   return (

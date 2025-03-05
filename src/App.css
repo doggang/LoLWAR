@@ -88,3 +88,23 @@
   border-radius: 3px;
   border: none;
 }
+
+#musicToggle{
+  position: absolute; 
+  top: 50px; 
+  right: 370px; 
+  z-index: 1000;
+  background-color: #1e252e;
+  color: white;
+  border: 2px solid #d4af37;
+  font-size: 16px;
+  height: 33px;
+  width: 100px;
+  border-radius: 6px;
+}
+#musicToggle:hover{
+  cursor: pointer;
+  background-color: #0f1217;
+  color: rgb(211, 211, 211);
+  border: 2px solid #7b6621;
+}

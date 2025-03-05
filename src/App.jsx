@@ -43,7 +43,6 @@ function App() {
       };
       setSummoner(prevSummoner => [newSummoner, ...prevSummoner]);
     }
-    console.log("소환사 추가");
   };
   // 소환사 정보 Pick창에 출력(Read)
   // 이 웹사이트의 핵심 서비스 => 티어를 바탕으로 밸런스있게 짜주는 역할
@@ -132,39 +131,38 @@ function App() {
   }, [summoner])
 
   // ---------------------------------------------------------------------------------------음악
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [audio, setAudio] = useState(null);
+
   useEffect(() => {
-    const audio = new Audio();
-    audio.src = './bgm.mp3';  // public 폴더의 파일을 직접 참조
-    audio.loop = true;
-  
-    const playAudio = async () => {
-      try {
-        await audio.play();
-        console.log("음악 재생 시작");
-      } catch (err) {
-        console.error("음악 재생 실패:", err);
-      }
-    };
-  
-    // 페이지 로드 후 사용자 상호작용이 있을 때 음악 재생
-    const handleUserInteraction = () => {
-      playAudio();
-      document.removeEventListener('click', handleUserInteraction);
-    };
-  
-    // 첫 번째 클릭 이벤트로 음악 재생
-    document.addEventListener('click', handleUserInteraction);
-  
+    const newAudio = new Audio('./bgm.mp3');
+    newAudio.loop = true;
+    setAudio(newAudio);
+
     return () => {
-      audio.pause();
-      audio.currentTime = 0;
-      document.removeEventListener('click', handleUserInteraction);
+      newAudio.pause();
+      newAudio.currentTime = 0;
     };
   }, []);
+
+  // 음악 토글 함수
+  const toggleMusic = () => {
+    if (audio) {
+      if (isPlaying) {
+        audio.pause();
+      } else {
+        audio.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
   // ---------------------------------------------------------------------------------------음악
   return (
     <div className='app'>
       <div className='background'>
+      <button id="musicToggle"onClick={toggleMusic}>
+          {isPlaying ? '🔊 음악 끄기' : '🔇 음악 켜기'}
+        </button>
         <Pick 
           summoner={summoner}
           sumPeople={sumPeople}
