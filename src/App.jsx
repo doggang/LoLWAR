@@ -48,39 +48,64 @@ function App() {
   // 소환사 정보 Pick창에 출력(Read)
   // 이 웹사이트의 핵심 서비스 => 티어를 바탕으로 밸런스있게 짜주는 역할
   const balanced = () => {
-
-    // 기존 summoner 배열을 티어 포인트로 정렬
-    const sortedSummoners = [...summoner].sort((a, b) => b.tier - a.tier);
+    // 랜덤성과 밸런스를 동시에 고려하는 알고리즘
+    const sortedSummoners = [...summoner]
+      .sort((a, b) => b.tier - a.tier);
   
-    let newATeam = [];
-    let newBTeam = [];
-    let aTeamPoints = 0;
-    let bTeamPoints = 0;
+    let attempts = 0;
+    let bestTeamDiff = Infinity;
+    let bestATeam = [];
+    let bestBTeam = [];
   
-    sortedSummoners.forEach(summoner => {
-      const tierValue = tierPoint[summoner.tier];
+    // 여러 번의 시도를 통해 최적의 팀 조합 찾기
+    while (attempts < 50) {  // 50번의 시도로 최적해 탐색
+      let candidates = [...sortedSummoners].sort(() => Math.random() - 0.5);
+      
+      let newATeam = [];
+      let newBTeam = [];
+      let aTeamPoints = 0;
+      let bTeamPoints = 0;
   
-      // 티어 포인트의 합계가 적은 팀에 소환사를 배정
-      if (newATeam.length < 5 && (aTeamPoints <= bTeamPoints || newBTeam.length >= 5)) {
-        newATeam.push(summoner);
-        aTeamPoints += tierValue;
-      } else if (newBTeam.length < 5) {
-        newBTeam.push(summoner);
-        bTeamPoints += tierValue;
+      candidates.forEach(summoner => {
+        const tierValue = tierPoint[summoner.tier];
+  
+        // 포인트 차이를 최소화하는 팀 배정 로직
+        if (newATeam.length < 5 && (aTeamPoints <= bTeamPoints || newBTeam.length >= 5)) {
+          newATeam.push(summoner);
+          aTeamPoints += tierValue;
+        } else if (newBTeam.length < 5) {
+          newBTeam.push(summoner);
+          bTeamPoints += tierValue;
+        }
+      });
+  
+      // 팀 포인트 차이 계산
+      const teamPointDiff = Math.abs(aTeamPoints - bTeamPoints);
+  
+      // 더 나은 밸런스를 찾으면 최적의 팀으로 갱신
+      if (teamPointDiff < bestTeamDiff) {
+        bestTeamDiff = teamPointDiff;
+        bestATeam = newATeam;
+        bestBTeam = newBTeam;
       }
-    });
-    
+  
+      // 거의 완벽한 밸런스를 찾으면 즉시 종료
+      if (bestTeamDiff <= 5) break;
+  
+      attempts++;
+    }
+  
     // 팀 멤버가 5명이 안 되면 빈 자리 채우기
-    while(newATeam.length < 5) {
-      newATeam.push(0);
+    while(bestATeam.length < 5) {
+      bestATeam.push(0);
     }
     
-    while(newBTeam.length < 5) {
-      newBTeam.push(0);
+    while(bestBTeam.length < 5) {
+      bestBTeam.push(0);
     }
     
-    setATeam(newATeam);
-    setBTeam(newBTeam);
+    setATeam(bestATeam);
+    setBTeam(bestBTeam);
   };
 
   // 소환사 정보 입력시 State 최신화(Update)

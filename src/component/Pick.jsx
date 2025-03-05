@@ -6,19 +6,18 @@ const Pick = ({ summoner, aTeam, bTeam, balanced, allTier, tierPoint, settingATe
   const onclickBalance = () => {
     // 모든 소환사의 정보가 입력되었는지 확인
     const allFilled = summoner.every(player => player.sumName !== "");
-
+     
     if (!allFilled) {
       alert("모든 소환사의 정보를 입력하세요");
       return;
     }
-
-    // 먼저 최신 데이터로 밸런스 계산
+     
+    // 직접 balanced 함수 호출
     balanced();
-    // 그 후 결과를 설정
-    setTimeout(() => {
-      setSettingATeam(aTeam);
-      setSettingBTeam(bTeam);
-    }, 0);
+  
+    // 결과를 즉시 설정
+    setSettingATeam(aTeam);
+    setSettingBTeam(bTeam);
   };
 
   return (
