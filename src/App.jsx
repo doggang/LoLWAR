@@ -20,6 +20,8 @@ function App() {
   ];
   const tierPoint = [1,2,3,4, 5,6,7,8, 9,10,11,12, 13,15,16,17 ,17,18,19,21 ,22,23,24,26 ,28,30,34,37 ,40,43,46,48, 50,52,54];
   
+  const [mode, setMode] = useState("티어");
+  const point = [1,2,3,4,5,6,7,8,9,10];
   
   
   const idRef = useRef(0); // 각 Summoner의 id
@@ -157,6 +159,15 @@ function App() {
     }
   };
   // ---------------------------------------------------------------------------------------음악
+  
+  const modeChange=(e)=>{
+    setMode(e.target.value);
+  }
+  
+  useEffect(()=>{
+    console.log(mode);
+  },[mode]);
+
   return (
     <div className='app'>
       <div className='background'>
@@ -185,6 +196,10 @@ function App() {
           onUpdate={onUpdate}
           balanced={balanced}
         />
+        <select id="mode" type="text" onChange={modeChange}>
+          <option value="티어">티어</option>
+          <option value="포인트">포인트</option>
+        </select>
       </div>
     </div>
   )
