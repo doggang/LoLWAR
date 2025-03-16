@@ -2,7 +2,7 @@ import { useState, useRef, useEffect} from 'react'
 import './App.css'
 import Pick from './component/Pick'
 import Community from './component/Community'
-
+import AddMem from './component/AddMem'
 function App() {
 
  // 
@@ -33,7 +33,6 @@ function App() {
   const [bTeam, setBTeam] = useState([0,0,0,0,0]); //추가된 소환사 B팀 정보
   const [settingATeam, setSettingATeam] = useState([0,0,0,0,0]); //밸런스가 맞춰진 A팀 정보(pick창에 나옴)
   const [settingBTeam, setSettingBTeam] = useState([0,0,0,0,0]); //밸런스가 맞춰진 A팀 정보(pick창에 나옴)
-  
   
   // 새로운 소환사 추가함수(Create)
   const onCreate = () => {

@@ -78,3 +78,79 @@ font-size: 21px;
   color: rgb(211, 211, 211);
   border: 2px solid #7b6621;
 }
+
+/*-----------고멤 추가 CSS------------ */
+#mem{
+  position: absolute;
+  right:700px;
+  top: 150px;
+  width: 500px;
+  height: 850px;
+  background-color: #010A13;
+  border: 2px solid #463714;
+}
+#memCloseBtn{
+  position: relative;
+  left: 460px;
+  top: -15px;
+  background-color: #1e252e;
+  color: white;
+  border: 2px solid #d4af37;
+  font-size: 20px;
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+}
+#memCloseBtn:hover{
+  cursor: pointer;
+  background-color: #151920;
+  border: 2px solid #a5882a;
+}
+#memTitle{
+  color: #F0E6D2;
+  font-size: 24px;
+  text-align: center;
+  padding: 0 0 40px;
+}
+.memDetailWrap{
+  padding: 10px 30px;
+  display: flex;
+  gap: 20px;
+  font-size: 18px;
+  color: white;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+}
+.memDetailWrap:hover{
+  background-color: #181d24;
+}
+.memChkbox{
+  border-color: #846E3F;
+  width: 20px;
+}
+.memImg{
+  background-image: url("../assets/sumIcon.jpg");
+  background-size: cover;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+}
+.memName{
+  line-height: 40px;
+}
+#memAdd{
+  position: relative;
+  left: 190px;
+  top: 612px;
+  background-color: #1e252e;
+  color: white;
+  border: 2px solid #d4af37;
+  font-size: 20px;
+  height: 45px;
+  width: 120px;
+}
+#memAdd:hover{
+  cursor: pointer;
+  background-color: #151920;
+  border: 2px solid #a5882a;
+
+}
