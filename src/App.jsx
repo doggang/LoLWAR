@@ -2,7 +2,6 @@ import { useState, useRef, useEffect} from 'react'
 import './App.css'
 import Pick from './component/Pick'
 import Community from './component/Community'
-import AddMem from './component/AddMem'
 function App() {
 
  // 
