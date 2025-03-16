@@ -58,3 +58,23 @@ font-size: 21px;
   color: rgb(211, 211, 211);
   border: 2px solid #7b6621;
 }
+
+#fixedAddBtn{
+  position: relative;
+  right: -15px;
+  top: 3.5px;
+  background-color: #1e252e;
+  color: white;
+  border: 2px solid #d4af37;
+  font-size: 16px;
+  height: 33px;
+  width: 50px;
+  border-radius: 6px;
+}
+
+#fixedAddBtn:hover{
+  cursor: pointer;
+  background-color: #0f1217;
+  color: rgb(211, 211, 211);
+  border: 2px solid #7b6621;
+}

@@ -16,6 +16,7 @@ const Community = ({onCreate, onDelete, onUpdate, summoner, allTier, sumPeople, 
       <div>
         <div className="communityTab">
           <div>일반 ({sumPeople}/10)</div>
+          <button onClick={onCreate} id="fixedAddBtn">고멤</button>
           <button onClick={onCreate} id="addBtn">소환사 추가</button>
         </div>
         {

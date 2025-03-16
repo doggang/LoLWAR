@@ -75,6 +75,7 @@ const Pick = ({ summoner, aTeam, bTeam, balanced, allTier, tierPoint, settingATe
       <div id="introduce">
         <div id="introduceTitle">사용 방법</div>
         <div id="introduceHow">
+          티어와 포인트 중 밸런싱할 기준을 정하고<br />
           우측 상단에 소환사 추가 버튼 클릭 후,<br />
           이름, 티어 정보를 입력!<br />
           화면 하단부에 밸런스 맞추기 버튼을 누르면 끝!

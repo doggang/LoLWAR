@@ -21,6 +21,7 @@ function App() {
   const tierPoint = [1,2,3,4, 5,6,7,8, 9,10,11,12, 13,15,16,17 ,17,18,19,21 ,22,23,24,26 ,28,30,34,37 ,40,43,46,48, 50,52,54];
   
   const [mode, setMode] = useState("티어");
+  const allPoint = ["1 Point","2 Point","3 Point","4 Point","5 Point","6 Point","7 Point","8 Point","9 Point","10 Point"];
   const point = [1,2,3,4,5,6,7,8,9,10];
   
   
@@ -174,28 +175,65 @@ function App() {
       <button id="musicToggle"onClick={toggleMusic}>
           {isPlaying ? '🔊 음악 끄기' : '🔇 음악 켜기'}
         </button>
-        <Pick 
-          summoner={summoner}
-          sumPeople={sumPeople}
-          aTeam={aTeam}
-          bTeam={bTeam}
-          balanced={balanced}
-          allTier={allTier}
-          tierPoint={tierPoint}
-          settingATeam={settingATeam}
-          settingBTeam = {settingBTeam}
-          setSettingATeam={setSettingATeam}
-          setSettingBTeam={setSettingBTeam}
-        />
-        <Community
-          summoner={summoner}
-          onCreate={onCreate}
-          onDelete={onDelete}
-          allTier={allTier}
-          sumPeople={sumPeople}
-          onUpdate={onUpdate}
-          balanced={balanced}
-        />
+        {
+          ((ex) => {
+          let result;
+          if(mode==="티어"){
+            result = <>
+            <Pick 
+              summoner={summoner}
+              sumPeople={sumPeople}
+              aTeam={aTeam}
+              bTeam={bTeam}
+              balanced={balanced}
+              allTier={allTier}
+              tierPoint={tierPoint}
+              settingATeam={settingATeam}
+              settingBTeam = {settingBTeam}
+              setSettingATeam={setSettingATeam}
+              setSettingBTeam={setSettingBTeam}
+            />
+            <Community
+              summoner={summoner}
+              onCreate={onCreate}
+              onDelete={onDelete}
+              allTier={allTier}
+              sumPeople={sumPeople}
+              onUpdate={onUpdate}
+              balanced={balanced}
+            />
+          </>
+          
+          } else if(mode==="포인트") {
+            result = <>
+            <Pick 
+              summoner={summoner}
+              sumPeople={sumPeople}
+              aTeam={aTeam}
+              bTeam={bTeam}
+              balanced={balanced}
+              allTier={allPoint}
+              tierPoint={point}
+              settingATeam={settingATeam}
+              settingBTeam = {settingBTeam}
+              setSettingATeam={setSettingATeam}
+              setSettingBTeam={setSettingBTeam}
+            />
+            <Community
+              summoner={summoner}
+              onCreate={onCreate}
+              onDelete={onDelete}
+              allTier={allPoint}
+              sumPeople={sumPeople}
+              onUpdate={onUpdate}
+              balanced={balanced}
+            />
+          </>
+          }
+          return result;
+          })()
+        }
+        
         <select id="mode" type="text" onChange={modeChange}>
           <option value="티어">티어</option>
           <option value="포인트">포인트</option>
