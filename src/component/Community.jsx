@@ -1,10 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Summoner from '../component/Summoner';
 import '../style/Community.css';
 
-const Community = ({onCreate, onDelete, onUpdate, summoner, allTier, sumPeople, balanced}) => {
+const Community = ({onCreate, onDelete, onUpdate, summoner, allTier, sumPeople, balanced, fixedMem, setSumPeople}) => {
 
   const [addMemBtn, setAddMemBtn] = useState("OFF");
+  const [checkedList, setCheckedList] = useState([]);
+
+  const onChangeMem = (sumName, id, tier, e) => {
+  // 체크박스의 체크 상태 가져오기
+  const isChecked = e.target.checked;
+  
+  // 체크된 경우
+  if (isChecked) {
+    // 현재 체크된 리스트에 추가하기 전에 개수 확인
+    if (checkedList.length + sumPeople >= 10) {
+      alert("최대 10명까지만 선택할 수 있습니다.");
+      e.target.checked = false; // 체크 해제
+      return;
+    }
+    
+    // 체크된 리스트에 추가
+    setCheckedList([...checkedList, { id, sumName, tier }]);
+  } else {
+    // 체크 해제된 경우, 체크된 리스트에서 제거
+    setCheckedList(checkedList.filter(item => item.id !== id));
+  }
+};
+useEffect(()=>{
+  console.log(checkedList);
+},[checkedList])
+
   const OnClickAddMemBtn = (e)=>{
     addMemBtn==="OFF"?setAddMemBtn("ON"):setAddMemBtn("OFF")
   }
@@ -16,10 +42,24 @@ const Community = ({onCreate, onDelete, onUpdate, summoner, allTier, sumPeople, 
         ?<div id="mem">
           <button id="memCloseBtn" onClick={OnClickAddMemBtn} >X</button>
           <div id="memTitle">추가 가능한 플레이어</div>
-          <div className="memDetailWrap">   {/* 고정멤버 Wrap */}
-            <input className="memChkbox" type="checkbox" id="memChk"/>
-            <label className="memImg" htmlFor="memChk"></label>
-            <label className="memName" htmlFor="memChk">닉네임은그것나랑께요</label>
+          <div id="memDetailWrapCover">
+          {
+            fixedMem.map((summ, key) => (
+              <label className="memDetailWrap" key={key}>
+              <input 
+                onChange={(e) => onChangeMem(summ.sumName, summ.id, summ.tier, e)} 
+                className="memChkbox" 
+                type="checkbox" 
+                id={summ.sumName}
+              />                <div className="memImg" htmlFor={summ.sumName}></div>
+                <div className="memName" htmlFor={summ.sumName}>{summ.sumName}</div>
+              </label>
+            ))
+          }
+            
+            
+
+
           </div>
           <button id="memAdd">추가하기</button>
         </div>

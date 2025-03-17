@@ -45,6 +45,9 @@ function App() {
       setSummoner(prevSummoner => [newSummoner, ...prevSummoner]);
     }
   };
+
+  
+
   // 소환사 정보 Pick창에 출력(Read)
   // 이 웹사이트의 핵심 서비스 => 티어를 바탕으로 밸런스있게 짜주는 역할
   const balanced = () => {
@@ -167,6 +170,31 @@ function App() {
     console.log(mode);
   },[mode]);
 
+  const [fixedMem, setFixedMem] = useState([]);
+  
+  useEffect(() => {
+    const fixedSummoner = [
+      { id: -1, sumName: "허수빈", tier: 1 },
+      { id: -2, sumName: "유영선", tier: 3 },
+      { id: -3, sumName: "장재현", tier: 3 },
+      { id: -4, sumName: "금영수", tier: 5 },
+      { id: -5, sumName: "이석원", tier: 5 },
+      { id: -6, sumName: "이정훈", tier: 5 },
+      { id: -7, sumName: "엄예빈", tier: 5 },
+      { id: -8, sumName: "최지헌", tier: 6 },
+      { id: -9, sumName: "오정욱", tier: 7 },
+      { id: -10, sumName: "윤정보", tier: 7 },
+      { id: -11, sumName: "이어진", tier: 7 },
+      { id: -12, sumName: "이병태", tier: 7 },
+      { id: -13, sumName: "정희수", tier: 8 },
+      { id: -14, sumName: "임원빈", tier: 8 },
+      { id: -15, sumName: "김도현", tier: 9 },
+    ];
+    
+    setFixedMem(fixedSummoner);
+  }, []);
+  
+
   return (
     <div className='app'>
       <div className='background'>
@@ -199,6 +227,9 @@ function App() {
               sumPeople={sumPeople}
               onUpdate={onUpdate}
               balanced={balanced}
+              fixedMem={fixedMem}
+              setSumPeople={setSumPeople}
+              
             />
           </>
           
@@ -225,6 +256,8 @@ function App() {
               sumPeople={sumPeople}
               onUpdate={onUpdate}
               balanced={balanced}
+              fixedMem={fixedMem}
+              setSumPeople={setSumPeople}
             />
           </>
           }

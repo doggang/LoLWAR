@@ -123,3 +123,8 @@
   border-radius: 6px;
   text-align: center;
 }
+#mode:hover{
+  cursor: pointer;
+  background-color: #151920;
+  border: 2px solid #a5882a;
+}

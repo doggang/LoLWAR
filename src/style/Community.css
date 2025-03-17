@@ -88,6 +88,7 @@ font-size: 21px;
   height: 850px;
   background-color: #010A13;
   border: 2px solid #463714;
+  border-radius: 5px;
 }
 #memCloseBtn{
   position: relative;
@@ -112,6 +113,11 @@ font-size: 21px;
   text-align: center;
   padding: 0 0 40px;
 }
+#memDetailWrapCover{
+  width: 100%;
+  height: 630px;
+  overflow-y: auto;
+}
 .memDetailWrap{
   padding: 10px 30px;
   display: flex;
@@ -122,6 +128,7 @@ font-size: 21px;
 }
 .memDetailWrap:hover{
   background-color: #181d24;
+  cursor: pointer;
 }
 .memChkbox{
   border-color: #846E3F;
@@ -140,7 +147,7 @@ font-size: 21px;
 #memAdd{
   position: relative;
   left: 190px;
-  top: 612px;
+  top: 32px;
   background-color: #1e252e;
   color: white;
   border: 2px solid #d4af37;
