@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import Summoner from '../component/Summoner';
 import '../style/Community.css';
 
-const Community = ({onCreate, onDelete, onUpdate, summoner, allTier, sumPeople, balanced, fixedMem, setSumPeople}) => {
+const Community = ({onCreate, onDelete, onUpdate, summoner, allTier, sumPeople, balanced, fixedMem, setSumPeople, checkedList, setCheckedList,setSummoner}) => {
 
   const [addMemBtn, setAddMemBtn] = useState("OFF");
-  const [checkedList, setCheckedList] = useState([]);
+  const [add, setAdd] = useState(0);
+  
 
   const onChangeMem = (sumName, id, tier, e) => {
   // 체크박스의 체크 상태 가져오기
@@ -35,6 +36,28 @@ useEffect(()=>{
     addMemBtn==="OFF"?setAddMemBtn("ON"):setAddMemBtn("OFF")
   }
 
+  const onClickAdd = (e)=>{
+     // 현재 체크된 리스트에 추가하기 전에 개수 확인
+     if (checkedList.length + sumPeople > 10) {
+      alert("최대 10명까지만 선택할 수 있습니다.");
+      e.target.checked = false; // 체크 해제
+      return;
+    }
+  }
+  const addBtn = (e)=>{
+    for(let i=0; i<summoner.length; i++){
+      console.log(summoner[i].id);
+    }
+    setAdd(add+1);
+  }
+
+  useEffect(()=>{
+      for(let i=0; i<checkedList.length; i++){
+        setSummoner(prevList => [...prevList, checkedList[i]]);
+      }
+      console.log(summoner);
+     },[add])
+
   return (
     <div id="community">
       {
@@ -61,7 +84,8 @@ useEffect(()=>{
 
 
           </div>
-          <button id="memAdd">추가하기</button>
+          <button onClick={()=>{
+            onClickAdd(); addBtn();}} id="memAdd">추가하기</button>
         </div>
         :null
       }

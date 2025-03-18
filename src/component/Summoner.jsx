@@ -28,13 +28,15 @@ const Summoner = ({id, sumName, tier, allTier, tierPoint, onDelete, onUpdate, ba
       <div className="sumTitleImg"></div>
       <div className="sumNameWrap">
         <input value={gameName} onChange={nameChange} name="name" className="sumName" type="text" placeholder="이름" />
-        <select className="tierSelect" onChange={tierChange} >
-          {
-            allTier.map((alltier, index)=>{
-              return <option key={index} name="selectTier" value={index} >{alltier}</option>
-            })
-          }
-        </select>
+        {
+          id >=0 ?<select className="tierSelect" onChange={tierChange} >
+            {
+              allTier.map((alltier, index)=>{
+                return <option key={index} name="selectTier" value={index} >{alltier}</option>
+              })
+            }
+          </select> :null
+        }
       </div>
       {/* 삭제 버튼 클릭 시 해당 ID 전달 */}
       <button onClick={delClick} className="delBtn">X</button>

@@ -46,7 +46,9 @@ const Pick = ({ summoner, aTeam, bTeam, balanced, allTier, tierPoint, settingATe
                     <div className='sumInforIcon'></div>
                     <div>{player.sumName}</div>
                   </div>
-                  <div>{allTier[player.tier]}</div>
+                  {
+                    player.id >=0 ? <div>{allTier[player.tier]}</div> : null
+                  }
                 </div>
             ))
           }
@@ -64,7 +66,9 @@ const Pick = ({ summoner, aTeam, bTeam, balanced, allTier, tierPoint, settingATe
                     <div className='sumInforIcon'></div>
                     <div>{player.sumName}</div>
                   </div>
-                  <div>{allTier[player.tier]}</div>
+                  {
+                    player.id >=0 ? <div>{allTier[player.tier]}</div> : null
+                  }
                 </div>
             ))
           }

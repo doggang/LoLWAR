@@ -22,7 +22,7 @@ function App() {
   const [mode, setMode] = useState("티어");
   const allPoint = ["1 Point","2 Point","3 Point","4 Point","5 Point","6 Point","7 Point","8 Point","9 Point","10 Point"];
   const point = [1,2,3,4,5,6,7,8,9,10];
-  
+  const [checkedList, setCheckedList] = useState([]);
   
   const idRef = useRef(0); // 각 Summoner의 id
   const [sumPeople, setSumPeople] = useState(0); //community 창 속 소환사의 수
@@ -35,7 +35,7 @@ function App() {
   
   // 새로운 소환사 추가함수(Create)
   const onCreate = () => {
-    if (sumPeople < 10) {
+    if (sumPeople + checkedList.length < 10) {
       setSumPeople(prevSumPeople => prevSumPeople + 1);
       const newSummoner = {
         id: idRef.current++,
@@ -43,9 +43,10 @@ function App() {
         tier: 0
       };
       setSummoner(prevSummoner => [newSummoner, ...prevSummoner]);
+    }else{
+      alert("최대 10명까지만 선택할 수 있습니다.");
     }
   };
-
   
 
   // 소환사 정보 Pick창에 출력(Read)
@@ -229,7 +230,9 @@ function App() {
               balanced={balanced}
               fixedMem={fixedMem}
               setSumPeople={setSumPeople}
-              
+              checkedList={checkedList}
+              setCheckedList={setCheckedList}
+              setSummoner={setSummoner}
             />
           </>
           
@@ -258,6 +261,9 @@ function App() {
               balanced={balanced}
               fixedMem={fixedMem}
               setSumPeople={setSumPeople}
+              checkedList={checkedList}
+              setCheckedList={setCheckedList}
+              setSummoner={setSummoner}
             />
           </>
           }
