@@ -166,10 +166,6 @@ function App() {
   const modeChange=(e)=>{
     setMode(e.target.value);
   }
-  
-  useEffect(()=>{
-    console.log(mode);
-  },[mode]);
 
   const [fixedMem, setFixedMem] = useState([]);
   

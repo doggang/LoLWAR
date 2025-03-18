@@ -28,9 +28,6 @@ const Community = ({onCreate, onDelete, onUpdate, summoner, allTier, sumPeople, 
     setCheckedList(checkedList.filter(item => item.id !== id));
   }
 };
-useEffect(()=>{
-  console.log(checkedList);
-},[checkedList])
 
   const OnClickAddMemBtn = (e)=>{
     addMemBtn==="OFF"?setAddMemBtn("ON"):setAddMemBtn("OFF")
@@ -46,16 +43,29 @@ useEffect(()=>{
   }
   const addBtn = (e)=>{
     for(let i=0; i<summoner.length; i++){
-      console.log(summoner[i].id);
+      //console.log(summoner[i].id);
     }
     setAdd(add+1);
   }
 
   useEffect(()=>{
+
+    var idSet = new Set(checkedList.map(obj => obj.id));
+    var hasCommonId = false;
+    for(let i=0; i<summoner.length; i++){
+      if(idSet.has(summoner[i].id)){
+        hasCommonId = true;
+        break;
+      }
+    }
+    if(hasCommonId!==true){
       for(let i=0; i<checkedList.length; i++){
         setSummoner(prevList => [...prevList, checkedList[i]]);
       }
-      console.log(summoner);
+    }else{
+      alert("이미 추가한 소환사가 있습니다.\n추가된 소환사를 제외하고 추가해주십시오.");
+    }
+    hasCommonId = false;
      },[add])
 
   return (
