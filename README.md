@@ -90,6 +90,18 @@ $ npm run dev
 ├── bgm.mp3
 ├── .gitignore
 ├── src
+│   ├── main.jsx
+│   ├── App.jsx
+│   ├── App.css
+│   ├── index.css
+│   ├── component
+│   │   ├── Pick.jsx (좌측 픽창 부분)
+│   │   ├── Community.jsx (우측 커뮤니티창 부분)
+│   │   ├── Summoner.jsx (Community.jsx 속 플레이어 Tag)
+│   ├── style
+│   │   ├── Pick.css
+│   │   ├── Community.css
+│   │   ├── Summoner.css
 │   ├── assets
 │   │   ├── RIXGOB.TTF
 │   │   ├── RIXGOEB.TTF
@@ -105,15 +117,4 @@ $ npm run dev
 │   │   ├── 일반겜 픽.ogg
 │   │   ├── 픽잡는소리.ogg
 │   │   ├── 픽창소리.ogg
-│   ├── component
-│   │   ├── Community.jsx
-│   │   ├── Pick.jsx
-│   │   ├── Summoner.jsx
-│   ├── style
-│   │   ├── Community.css
-│   │   ├── Pick.css
-│   │   ├── Summoner.css
-│   ├── App.css
-│   ├── App.jsx
-│   ├── index.css
-│   ├── main.jsx
+
