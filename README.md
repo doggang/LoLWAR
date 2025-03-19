@@ -145,4 +145,6 @@ $ npm run dev
 │   │   ├── 일반겜 픽.ogg
 │   │   ├── 픽잡는소리.ogg
 │   │   ├── 픽창소리.ogg
-
+```
+### 성능
+<img src="https://github.com/user-attachments/assets/30764008-1daa-4db8-92b3-0ad7110d19d5" width="1000"/>
