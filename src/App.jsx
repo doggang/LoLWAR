@@ -35,7 +35,7 @@ function App() {
   
   // 새로운 소환사 추가함수(Create)
   const onCreate = () => {
-    if (sumPeople + checkedList.length < 10) {
+    if (summoner.length < 10) {
       setSumPeople(prevSumPeople => prevSumPeople + 1);
       const newSummoner = {
         id: idRef.current++,
@@ -183,9 +183,10 @@ function App() {
       { id: -10, sumName: "윤정보", tier: 7 },
       { id: -11, sumName: "이어진", tier: 7 },
       { id: -12, sumName: "이병태", tier: 7 },
-      { id: -13, sumName: "정희수", tier: 8 },
-      { id: -14, sumName: "임원빈", tier: 8 },
-      { id: -15, sumName: "김도현", tier: 9 },
+      { id: -13, sumName: "이우진", tier: 7 },
+      { id: -14, sumName: "정희수", tier: 8 },
+      { id: -15, sumName: "임원빈", tier: 8 },
+      { id: -16, sumName: "김도현", tier: 9 },
     ];
     
     setFixedMem(fixedSummoner);

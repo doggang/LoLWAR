@@ -31,6 +31,8 @@ const Community = ({onCreate, onDelete, onUpdate, summoner, allTier, sumPeople, 
 
   const OnClickAddMemBtn = (e)=>{
     addMemBtn==="OFF"?setAddMemBtn("ON"):setAddMemBtn("OFF")
+    setCheckedList([]); 
+    console.log(checkedList);
   }
 
   const onClickAdd = (e)=>{
@@ -42,10 +44,11 @@ const Community = ({onCreate, onDelete, onUpdate, summoner, allTier, sumPeople, 
     }
   }
   const addBtn = (e)=>{
-    for(let i=0; i<summoner.length; i++){
-      //console.log(summoner[i].id);
+    if (summoner.length < 10) {
+      setAdd(add+1);
+    }else{
+      alert("최대 10명까지만 선택할 수 있습니다.");
     }
-    setAdd(add+1);
   }
 
   useEffect(()=>{
@@ -108,7 +111,7 @@ const Community = ({onCreate, onDelete, onUpdate, summoner, allTier, sumPeople, 
       </div>
       <div>
         <div className="communityTab">
-          <div>일반 ({sumPeople}/10)</div>
+          <div>일반 ({summoner.length}/10)</div>
           <button onClick={OnClickAddMemBtn} id="fixedAddBtn">고멤</button>
           <button onClick={onCreate} id="addBtn">소환사 추가</button>
         </div>
