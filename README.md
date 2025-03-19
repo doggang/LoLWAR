@@ -1,3 +1,4 @@
+
 # LOL team balancing service v1.0
 > **소속 : 수도기계화보병사단 통신중대** <br/> **개발기간 : 2025.02.02 ~ 2025.03.19**
 
@@ -5,10 +6,10 @@
 
 > **개발 버전** : [https://doggang.github.io/LoLWAR/](https://doggang.github.io/LoLWAR/) <br>
 
-## 웹개발팀 소개
+## 웹개발자 소개
 | 김도현 | 
 | --- | 
-| <img width="160px" src=".png" />| 
+| <img width="160px" src="https://github.com/user-attachments/assets/f82a7855-2c4e-45f7-b8de-155376cf7edd" />| 
 | [@DogGang](https://github.com/doggang) | 
 | 대한민국 육군 중위 | 
 
@@ -61,11 +62,38 @@ $ npm run dev
 
 ---
 ## 화면 구성 🚀
-| 메인 페이지  |  소개 페이지   |
-| :-------------------------------------------: | :------------: |
-|  <img width="329" src=".png"/> |  <img width="329" src=".png"/>|  
-| 강좌 소개 페이지   |  강의 영상 페이지   |  
-| <img width="329" src=".png"/>   |  <img width="329" src=".png"/>     |
+<table align="center">
+  <tr>
+    <th colspan="2" align="center">
+      <img src="https://github.com/user-attachments/assets/ce115ee0-5a06-4902-8f23-03e41e3a8e7c" width="1000"/><br/>메인화면
+    </th>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/74bb2ac0-35c5-4e1d-ad14-41d2e58c9209" width="500"/><br/>밸런싱 화면
+    </td>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/86c10270-9288-4ed5-aab0-8171ed5c3c72" width="500"/><br/>음악 ON/OFF 버튼
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/f2759071-2f36-42cb-b7f9-f189a7882293" width="500"/><br/>소환사 추가
+    </td>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/be39be6f-1074-4e3d-a50c-0ecf571c288b" width="500"/><br/>고멤 추가
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/90537e70-270f-468f-ad2c-82ba779226a5" width="500"/><br/>티어/포인트 변환(커뮤니티 변화)
+    </td>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/b822a156-34ac-43b2-b352-dd2d398c268e" width="500"/><br/>티어/포인트 변환
+    </td>
+  </tr>
+</table>
+
 
 ---
 ## 주요 기능 🚢
@@ -90,31 +118,31 @@ $ npm run dev
 ├── bgm.mp3
 ├── .gitignore
 ├── src
-│   ├── main.jsx
-│   ├── App.jsx
-│   ├── App.css
-│   ├── index.css
-│   ├── component
-│   │   ├── Pick.jsx (좌측 픽창 부분)
-│   │   ├── Community.jsx (우측 커뮤니티창 부분)
-│   │   ├── Summoner.jsx (Community.jsx 속 플레이어 Tag)
-│   ├── style
-│   │   ├── Pick.css
-│   │   ├── Community.css
-│   │   ├── Summoner.css
-│   ├── assets
-│   │   ├── RIXGOB.TTF
-│   │   ├── RIXGOEB.TTF
-│   │   ├── RIXGOL.TTF
-│   │   ├── RIXGOM.TTF
-│   │   ├── bgimg.jpg
-│   │   ├── icon.jpg
-│   │   ├── lolicon.png
-│   │   ├── rix모던고딕b.ttf
-│   │   ├── sumIcon.jpg
-│   │   ├── title.png
-│   │   ├── 만질때 소리.ogg
-│   │   ├── 일반겜 픽.ogg
-│   │   ├── 픽잡는소리.ogg
-│   │   ├── 픽창소리.ogg
+│   ├── main.jsx
+│   ├── App.jsx
+│   ├── App.css
+│   ├── index.css
+│   ├── component
+│   │   ├── Pick.jsx (좌측 픽창 부분)
+│   │   ├── Community.jsx (우측 커뮤니티창 부분)
+│   │   ├── Summoner.jsx (Community.jsx 속 플레이어 Tag)
+│   ├── style
+│   │   ├── Pick.css
+│   │   ├── Community.css
+│   │   ├── Summoner.css
+│   ├── assets
+│   │   ├── RIXGOB.TTF
+│   │   ├── RIXGOEB.TTF
+│   │   ├── RIXGOL.TTF
+│   │   ├── RIXGOM.TTF
+│   │   ├── bgimg.jpg
+│   │   ├── icon.jpg
+│   │   ├── lolicon.png
+│   │   ├── rix모던고딕b.ttf
+│   │   ├── sumIcon.jpg
+│   │   ├── title.png
+│   │   ├── 만질때 소리.ogg
+│   │   ├── 일반겜 픽.ogg
+│   │   ├── 픽잡는소리.ogg
+│   │   ├── 픽창소리.ogg
 
