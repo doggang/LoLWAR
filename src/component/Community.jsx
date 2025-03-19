@@ -32,7 +32,6 @@ const Community = ({onCreate, onDelete, onUpdate, summoner, allTier, sumPeople, 
   const OnClickAddMemBtn = (e)=>{
     addMemBtn==="OFF"?setAddMemBtn("ON"):setAddMemBtn("OFF")
     setCheckedList([]); 
-    console.log(checkedList);
   }
 
   const onClickAdd = (e)=>{

@@ -4,7 +4,6 @@ import Pick from './component/Pick'
 import Community from './component/Community'
 function App() {
 
- // 
 
   const allTier = 
   [
@@ -163,11 +162,12 @@ function App() {
   };
   // ---------------------------------------------------------------------------------------음악
   
-  const modeChange=(e)=>{
+  const modeChange=(e)=>{ // 티어 <-> 포인트로 밸런싱 기준 모드를 통해 바꾸게 함.
     setMode(e.target.value);
   }
 
-  const [fixedMem, setFixedMem] = useState([]);
+  // ----------------------- 고멤 ------------------------ //
+  const [fixedMem, setFixedMem] = useState([]);  
   
   useEffect(() => {
     const fixedSummoner = [
@@ -191,9 +191,9 @@ function App() {
     
     setFixedMem(fixedSummoner);
   }, []);
-  
+    // ----------------------- 고멤 ------------------------ //
 
-  return (
+    return (
     <div className='app'>
       <div className='background'>
       <button id="musicToggle"onClick={toggleMusic}>
