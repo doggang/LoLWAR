@@ -1,0 +1,163 @@
+/* Community */
+#community{
+  background-color: rgb(5, 20, 31);
+  width: 320px;
+  height: 1050px;
+}
+#comTitle{
+  display: flex;
+  padding: 15px;
+  width: calc(100%-30px);
+  height: 90px;
+  border-bottom: 1px solid rgba(252, 253, 224, 0.243);
+}
+#comTitleImg{
+  background-image: url("../assets/icon.jpg");
+  background-size: cover;
+  border-radius: 70%;
+  width: 85px;
+  height: 85px;
+}
+#comTitleStateCover{
+  width: calc(100%-85px);
+  margin: 20px 15px;
+}
+#comTitleName{
+  color: rgba(251, 251, 235, 0.928);
+font-size: 21px;
+}
+#comTitleState{
+  font-size: 16px;
+  color: #009F3F;
+  margin: 6px 0px;
+}
+.communityTab{
+  display: flex;
+  justify-content: space-between;
+  color: rgba(251, 251, 235, 0.928);
+  background-color: rgb(3, 10, 16);
+  width: calc(100%-40px);
+  height: 40px;
+  line-height: 40px;
+  padding: 0 20px;
+}
+#addBtn{
+  position: relative;
+  top: 3.5px;
+  background-color: #1e252e;
+  color: white;
+  border: 2px solid #d4af37;
+  font-size: 16px;
+  height: 33px;
+  width: 100px;
+  border-radius: 6px;
+}
+#addBtn:hover{
+  cursor: pointer;
+  background-color: #0f1217;
+  color: rgb(211, 211, 211);
+  border: 2px solid #7b6621;
+}
+
+#fixedAddBtn{
+  position: relative;
+  right: -15px;
+  top: 3.5px;
+  background-color: #1e252e;
+  color: white;
+  border: 2px solid #d4af37;
+  font-size: 16px;
+  height: 33px;
+  width: 50px;
+  border-radius: 6px;
+}
+
+#fixedAddBtn:hover{
+  cursor: pointer;
+  background-color: #0f1217;
+  color: rgb(211, 211, 211);
+  border: 2px solid #7b6621;
+}
+
+/*-----------고멤 추가 CSS------------ */
+#mem{
+  position: absolute;
+  right:700px;
+  top: 150px;
+  width: 500px;
+  height: 850px;
+  background-color: #010A13;
+  border: 2px solid #463714;
+  border-radius: 5px;
+}
+#memCloseBtn{
+  position: relative;
+  left: 460px;
+  top: -15px;
+  background-color: #1e252e;
+  color: white;
+  border: 2px solid #d4af37;
+  font-size: 20px;
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+}
+#memCloseBtn:hover{
+  cursor: pointer;
+  background-color: #151920;
+  border: 2px solid #a5882a;
+}
+#memTitle{
+  color: #F0E6D2;
+  font-size: 24px;
+  text-align: center;
+  padding: 0 0 40px;
+}
+#memDetailWrapCover{
+  width: 100%;
+  height: 630px;
+  overflow-y: auto;
+}
+.memDetailWrap{
+  padding: 10px 30px;
+  display: flex;
+  gap: 20px;
+  font-size: 18px;
+  color: white;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+}
+.memDetailWrap:hover{
+  background-color: #181d24;
+  cursor: pointer;
+}
+.memChkbox{
+  border-color: #846E3F;
+  width: 20px;
+}
+.memImg{
+  background-image: url("../assets/sumIcon.jpg");
+  background-size: cover;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+}
+.memName{
+  line-height: 40px;
+}
+#memAdd{
+  position: relative;
+  left: 190px;
+  top: 32px;
+  background-color: #1e252e;
+  color: white;
+  border: 2px solid #d4af37;
+  font-size: 20px;
+  height: 45px;
+  width: 120px;
+}
+#memAdd:hover{
+  cursor: pointer;
+  background-color: #151920;
+  border: 2px solid #a5882a;
+
+}
