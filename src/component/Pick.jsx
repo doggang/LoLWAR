@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import '../style/Pick.css';
 
-const Pick = ({ summoner, aTeam, bTeam, balanced, allTier, tierPoint, settingATeam, settingBTeam, setSettingATeam, setSettingBTeam }) => {
+const Pick = ({ summoner, aTeam, bTeam, balanced, allTier, tierPoint, settingATeam, settingBTeam, setSettingATeam, setSettingBTeam,hide }) => {
 
   const onclickBalance = () => {
     // 모든 소환사의 정보가 입력되었는지 확인
@@ -47,6 +47,7 @@ const Pick = ({ summoner, aTeam, bTeam, balanced, allTier, tierPoint, settingATe
                     <div>{player.sumName}</div>
                   </div>
                   {
+                    hide=='hide' ? null :
                     player.id >=0 ? <div>{allTier[player.tier]}</div> : null
                   }
                 </div>
@@ -57,7 +58,7 @@ const Pick = ({ summoner, aTeam, bTeam, balanced, allTier, tierPoint, settingATe
 
         <div className="roomTeamCover">
           <div className="roomTeam">2팀</div>
-
+          
           {
             settingBTeam.map((player, i) => (
               (player == 0 || player == null) ? <div key={i} className="summoner">비어 있음</div> :
@@ -67,6 +68,7 @@ const Pick = ({ summoner, aTeam, bTeam, balanced, allTier, tierPoint, settingATe
                     <div>{player.sumName}</div>
                   </div>
                   {
+                    hide=='hide' ? null :
                     player.id >=0 ? <div>{allTier[player.tier]}</div> : null
                   }
                 </div>

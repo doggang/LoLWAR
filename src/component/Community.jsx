@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Summoner from '../component/Summoner';
 import '../style/Community.css';
 
-const Community = ({onCreate, onDelete, onUpdate, summoner, allTier, sumPeople, balanced, fixedMem, setSumPeople, checkedList, setCheckedList,setSummoner}) => {
+const Community = ({onCreate, onDelete, onUpdate, summoner, allTier, sumPeople, balanced, fixedMem, setSumPeople, checkedList, setCheckedList,setSummoner, hide}) => {
 
   const [addMemBtn, setAddMemBtn] = useState("OFF");
   const [add, setAdd] = useState(0);
@@ -123,6 +123,7 @@ const Community = ({onCreate, onDelete, onUpdate, summoner, allTier, sumPeople, 
             onDelete={onDelete}
             onUpdate={onUpdate}
             balanced={balanced}
+            hide={hide}
             />
           })
         }

@@ -2,7 +2,7 @@ import '../style/Summoner.css';
 import { useState, useRef, useEffect } from "react";
 
 
-const Summoner = ({id, sumName, tier, allTier, tierPoint, onDelete, onUpdate, balanced}) => {
+const Summoner = ({id, sumName, tier, allTier, tierPoint, onDelete, onUpdate, balanced, hide}) => {
 
 
   const [gameName, setGamename] = useState(sumName || "");
@@ -29,12 +29,14 @@ const Summoner = ({id, sumName, tier, allTier, tierPoint, onDelete, onUpdate, ba
       <div className="sumNameWrap">
         <input value={gameName} onChange={nameChange} name="name" className="sumName" type="text" placeholder="이름" />
         {
-          id >=0 ?<select className="tierSelect" onChange={tierChange} >
-            {
-              allTier.map((alltier, index)=>{
-                return <option key={index} name="selectTier" value={index} >{alltier}</option>
-              })
-            }
+          
+          hide=='hide' ? null :
+            id >=0 ?<select className="tierSelect" onChange={tierChange} >
+              {
+                allTier.map((alltier, index)=>{
+                  return <option key={index} name="selectTier" value={index} >{alltier}</option>
+                })
+              }
           </select> :null
         }
       </div>

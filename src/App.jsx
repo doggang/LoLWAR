@@ -192,7 +192,18 @@ function App() {
     setFixedMem(fixedSummoner);
   }, []);
     // ----------------------- 고멤 ------------------------ //
-
+  const [hide, setHide] = useState("see");
+  const onClickHideBtn = (e)=>{
+    switch(hide){
+      case "hide" : 
+        setHide("see");
+        break;
+      case "see" : 
+        setHide("hide"); 
+        break;
+      default: break;
+    }
+  }
     return (
     <div className='app'>
       <div className='background'>
@@ -216,6 +227,7 @@ function App() {
               settingBTeam = {settingBTeam}
               setSettingATeam={setSettingATeam}
               setSettingBTeam={setSettingBTeam}
+              hide={hide}
             />
             <Community
               summoner={summoner}
@@ -230,6 +242,7 @@ function App() {
               checkedList={checkedList}
               setCheckedList={setCheckedList}
               setSummoner={setSummoner}
+              hide={hide}
             />
           </>
           
@@ -247,6 +260,7 @@ function App() {
               settingBTeam = {settingBTeam}
               setSettingATeam={setSettingATeam}
               setSettingBTeam={setSettingBTeam}
+              hide={hide}
             />
             <Community
               summoner={summoner}
@@ -261,13 +275,14 @@ function App() {
               checkedList={checkedList}
               setCheckedList={setCheckedList}
               setSummoner={setSummoner}
+              hide={hide}
             />
           </>
           }
           return result;
           })()
         }
-        
+        <button id="hideBtn" onClick={onClickHideBtn}>{hide==="hide" ? `🔒`: `🔓`}</button>
         <select id="mode" type="text" onChange={modeChange}>
           <option value="티어">티어</option>
           <option value="포인트">포인트</option>
