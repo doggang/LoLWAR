@@ -7,7 +7,7 @@
 #comTitle{
   display: flex;
   padding: 15px;
-  width: calc(100%-30px);
+  width: calc(100% - 30px);
   height: 90px;
   border-bottom: 1px solid rgba(252, 253, 224, 0.243);
 }
@@ -19,7 +19,7 @@
   height: 85px;
 }
 #comTitleStateCover{
-  width: calc(100%-85px);
+  width: calc(100% - 85px);
   margin: 20px 15px;
 }
 #comTitleName{
@@ -36,7 +36,7 @@ font-size: 21px;
   justify-content: space-between;
   color: rgba(251, 251, 235, 0.928);
   background-color: rgb(3, 10, 16);
-  width: calc(100%-40px);
+  width: calc(100% - 40px);
   height: 40px;
   line-height: 40px;
   padding: 0 20px;
