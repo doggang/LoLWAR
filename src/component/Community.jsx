@@ -5,6 +5,7 @@ import '../style/Community.css';
 const Community = ({onCreate, onDelete, onUpdate, summoner, allTier, sumPeople, balanced, fixedMem, setSumPeople, checkedList, setCheckedList,setSummoner, hide}) => {
 
   const [addMemBtn, setAddMemBtn] = useState("OFF");
+  const [editBtn, setEditBtn] = useState("추가 가능한 플레이어");
   const [add, setAdd] = useState(0);
   
 
@@ -49,7 +50,13 @@ const Community = ({onCreate, onDelete, onUpdate, summoner, allTier, sumPeople, 
       alert("최대 10명까지만 선택할 수 있습니다.");
     }
   }
-
+  const onClickEdit = (e)=>{
+    if(editBtn=="추가 가능한 플레이어"){
+      setEditBtn("플레이어 수정하기");
+    }else{
+      setEditBtn("추가 가능한 플레이어");
+    }
+  }
   useEffect(()=>{
 
     var idSet = new Set(checkedList.map(obj => obj.id));
@@ -76,7 +83,7 @@ const Community = ({onCreate, onDelete, onUpdate, summoner, allTier, sumPeople, 
         addMemBtn==="ON"
         ?<div id="mem">
           <button id="memCloseBtn" onClick={OnClickAddMemBtn} >X</button>
-          <div id="memTitle">추가 가능한 플레이어</div>
+          <div id="memTitle">{editBtn}</div>
           <div id="memDetailWrapCover">
           {
             fixedMem.map((summ, key) => (
@@ -96,8 +103,13 @@ const Community = ({onCreate, onDelete, onUpdate, summoner, allTier, sumPeople, 
 
 
           </div>
-          <button onClick={()=>{
-            onClickAdd(); addBtn();}} id="memAdd">추가하기</button>
+          <div id="memBtnWrap">
+            <button onClick={()=>{
+               onClickEdit();}} className="memBtn">수정하기</button>
+            <button onClick={()=>{
+              onClickAdd(); addBtn();}} className="memBtn">추가하기</button>
+          </div>
+          
         </div>
         :null
       }

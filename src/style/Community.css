@@ -144,18 +144,22 @@ font-size: 21px;
 .memName{
   line-height: 40px;
 }
-#memAdd{
+#memBtnWrap{
   position: relative;
-  left: 190px;
-  top: 32px;
+  left: 90px;
+}
+.memBtn{
+  position: relative;
+  top: 28px;
   background-color: #1e252e;
   color: white;
   border: 2px solid #d4af37;
   font-size: 20px;
   height: 45px;
   width: 120px;
+  margin: 0 20px;
 }
-#memAdd:hover{
+.memBtn:hover{
   cursor: pointer;
   background-color: #151920;
   border: 2px solid #a5882a;
