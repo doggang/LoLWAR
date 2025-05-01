@@ -25,7 +25,7 @@ function App() {
   const allPoint = ["1 Point","2 Point","3 Point","4 Point","5 Point","6 Point","7 Point","8 Point","9 Point","10 Point"];
   const point = [1,2,3,4,5,6,7,8,9,10];
   const [checkedList, setCheckedList] = useState([]);
-  
+  const [fixedMode,setFixedMode] = useState("normal");
   const idRef = useRef(0); // 각 Summoner의 id
   const [sumPeople, setSumPeople] = useState(0); //community 창 속 소환사의 수
   const [summoner, setSummoner] = useState([]); // 소환사 정보 객체(community에 나오는 정보)
@@ -142,7 +142,7 @@ function App() {
   const [audio, setAudio] = useState(null);
 
   useEffect(() => {
-    const newAudio = new Audio('./bgm.mp3');
+    const newAudio = new Audio('./bgm.wav');
     newAudio.loop = true;
     setAudio(newAudio);
 
@@ -170,30 +170,33 @@ function App() {
   }
 
   // ----------------------- 고멤 ------------------------ //
-  const [fixedMem, setFixedMem] = useState([]);  
-  
-  useEffect(() => {
-    const fixedSummoner = [
-      { id: -1, sumName: "허수빈", tier: 1 },
-      { id: -2, sumName: "유영선", tier: 3 },
-      { id: -3, sumName: "장재현", tier: 3 },
-      { id: -4, sumName: "금영수", tier: 5 },
-      { id: -5, sumName: "이석원", tier: 5 },
-      { id: -6, sumName: "이정훈", tier: 5 },
-      { id: -7, sumName: "엄예빈", tier: 5 },
-      { id: -8, sumName: "최지헌", tier: 6 },
-      { id: -9, sumName: "오정욱", tier: 7 },
-      { id: -10, sumName: "윤정보", tier: 7 },
-      { id: -11, sumName: "이어진", tier: 7 },
-      { id: -12, sumName: "이병태", tier: 7 },
-      { id: -13, sumName: "이우진", tier: 7 },
-      { id: -14, sumName: "정희수", tier: 8 },
-      { id: -15, sumName: "임원빈", tier: 8 },
-      { id: -16, sumName: "김도현", tier: 9 },
-    ];
+  let fixedSummoner = [
+    { id: -15, sumName: "허수빈", tier: 1 },
+    { id: -25, sumName: "유영선", tier: 3 },
+  ];
+  const fixedIdRef = useRef(-1); // 각 Summoner의 id
+  const [fixedMem, setFixedMem] = useState(fixedSummoner);  
+
+  // 고멤 추가함수(Create)
+  const fixedOnCreate = () => {
     
-    setFixedMem(fixedSummoner);
-  }, []);
+      const fixedNewSummoner = {
+        id: fixedIdRef.current--,
+        sumName: "",
+        tier: 0
+      };
+      setFixedMem(prevSummoner => [fixedNewSummoner, ...prevSummoner]);
+    
+  };
+  const fixedOnUpdate=()=>{
+    if(fixedMode=="normal"){
+      
+    }
+    setFixedMode()
+  }
+  useEffect(()=>{
+    console.log(fixedMem);
+  },[fixedMem])
     // ----------------------- 고멤 ------------------------ //
   const [hide, setHide] = useState("see");
   const onClickHideBtn = (e)=>{
@@ -233,12 +236,15 @@ function App() {
           setSumPeople,
           checkedList,
           setCheckedList,
-          setSummoner
+          setSummoner,
+
+          //고멤함수
+          fixedOnCreate
         }}>
           <button id="musicToggle"onClick={toggleMusic}>
             {isPlaying ? '🔊 음악 끄기' : '🔇 음악 켜기'}
           </button>
-          
+
           <Pick />
           <Community />
           
@@ -248,7 +254,14 @@ function App() {
             <option value="포인트">포인트</option>
           </select>
         </myContext.Provider>
+        
       </div>
+      <footer className="app-footer">
+        <div className="footer-content">
+          <p>곡목: Classic Summoner's Rift Champion Select (Draft Pick)</p>
+          <p>아티스트: League of Legends (라이엇 게임즈 제공)</p>
+        </div>
+      </footer>
     </div>
   )
 }

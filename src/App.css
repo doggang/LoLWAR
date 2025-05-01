@@ -10,22 +10,41 @@
 .app{
   background-color: rgb(24, 31, 37);
   display: flex;
+  align-items: center; 
+  flex-direction: column;
   width: 100vw;
   height: 100vh;
+
 }
 .background{
   position: relative;
   display: flex;
   z-index: 1;
-  margin: auto;
   background-repeat: no-repeat;
   background-size : cover;
-  background-image: url("./assets/bgimg.jpg");
+  background-image: url("./assets/bgimg.png");
   width: 1800px;
   height: 1050px;
+  margin: auto auto 0 auto;   
+
 }
 
+.app-footer {
+  width: 1800px;    
+  margin: 0 auto auto auto; 
+  background: rgba(30, 37, 46, 0.9);
+  border: none;
+  padding: 8px 0;
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+  border-top: 1px solid #444;
+}
 
+.app-footer .footer-content p {
+  margin: 2px 0;
+  font-family: "lolfont";
+}
 
 
 

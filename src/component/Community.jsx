@@ -6,9 +6,12 @@ import { myContext } from '../App';
 
 const Community = () => {
   const {onCreate, onDelete, onUpdate, summoner, allTier, allPoint, sumPeople, balanced,
-    fixedMem, setSumPeople, checkedList, setCheckedList,setSummoner, hide} = useContext(myContext);
+    fixedMem, setSumPeople, checkedList, setCheckedList,setSummoner, hide,
+    //고멤함수 아래
+    fixedOnCreate
+  } = useContext(myContext);
   const [addMemBtn, setAddMemBtn] = useState("OFF");
-  const [editBtn, setEditBtn] = useState("추가 가능한 플레이어");
+  const [editBtn, setEditBtn] = useState("");
   const [add, setAdd] = useState(0);
   
 
@@ -54,10 +57,15 @@ const Community = () => {
     }
   }
   const onClickEdit = (e)=>{
-    if(editBtn=="추가 가능한 플레이어"){
-      setEditBtn("플레이어 수정하기");
+    if(editBtn=="normal"){
+      setEditBtn("edit");
     }else{
-      setEditBtn("추가 가능한 플레이어");
+      setEditBtn("normal");
+    }
+  }
+  const onClickEditExit = (e)=>{
+    if(editBtn=="normal"){
+      setEditBtn("d");
     }
   }
   useEffect(()=>{
@@ -85,11 +93,12 @@ const Community = () => {
       {
         addMemBtn==="ON"
         ?<div id="mem">
-          <button id="memCloseBtn" onClick={OnClickAddMemBtn} >X</button>
-          <div id="memTitle">{editBtn}</div>
+          <button id="memCloseBtn" onClick={ ()=>{onClickEditExit(); OnClickAddMemBtn();}} >X</button>
+          <div id="memTitle">{editBtn=="normal"?"수정하기":"추가하기"}</div>
           <div id="memDetailWrapCover">
           {
             fixedMem.map((summ, key) => (
+              
               <label className="memDetailWrap" key={key}>
               <input 
                 onChange={(e) => onChangeMem(summ.sumName, summ.id, summ.tier, e)} 
@@ -99,7 +108,10 @@ const Community = () => {
               />                <div className="memImg" htmlFor={summ.sumName}></div>
                 <div className="memName" htmlFor={summ.sumName}>{summ.sumName}</div>
               </label>
+
             ))
+
+
           }
             
             
@@ -108,7 +120,7 @@ const Community = () => {
           </div>
           <div id="memBtnWrap">
             <button onClick={()=>{
-               onClickEdit();}} className="memBtn">수정하기</button>
+               onClickEdit(); fixedOnCreate();} } className="memBtn">{editBtn=="normal"?"저장하기":"수정하기"}</button>
             <button onClick={()=>{
               onClickAdd(); addBtn();}} className="memBtn">추가하기</button>
           </div>
@@ -126,7 +138,7 @@ const Community = () => {
       <div>
         <div className="communityTab">
           <div>일반 ({summoner.length}/10)</div>
-          <button onClick={OnClickAddMemBtn} id="fixedAddBtn">고멤</button>
+          <button onClick={()=>{onClickEditExit(); OnClickAddMemBtn();}} id="fixedAddBtn">고멤</button>
           <button onClick={onCreate} id="addBtn">소환사 추가</button>
         </div>
         {
