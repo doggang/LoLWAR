@@ -1,9 +1,12 @@
 import '../style/Summoner.css';
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
+import { myContext } from '../App';
 
 
-const Summoner = ({id, sumName, tier, allTier, tierPoint, onDelete, onUpdate, balanced, hide}) => {
+const Summoner = ({id, sumName, tier}) => {
 
+    const {mode, allTier, allPoint, tierPoint,
+      onDelete, onUpdate, balanced, hide} = useContext(myContext);
 
   const [gameName, setGamename] = useState(sumName || "");
     const nameChange = (e)=>{
@@ -33,9 +36,12 @@ const Summoner = ({id, sumName, tier, allTier, tierPoint, onDelete, onUpdate, ba
           hide=='hide' ? null :
             id >=0 ?<select className="tierSelect" onChange={tierChange} >
               {
-                allTier.map((alltier, index)=>{
+                mode === "티어" ? allTier.map((alltier, index)=>{
                   return <option key={index} name="selectTier" value={index} >{alltier}</option>
+                }):allPoint.map((allPoint, index)=>{
+                  return <option key={index} name="selectTier" value={index} >{allPoint}</option>
                 })
+                
               }
           </select> :null
         }

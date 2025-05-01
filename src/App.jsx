@@ -1,7 +1,10 @@
-import { useState, useRef, useEffect} from 'react'
+import { useState, useRef, useEffect, createContext} from 'react'
 import './App.css'
 import Pick from './component/Pick'
 import Community from './component/Community'
+
+export const myContext = createContext();
+
 function App() {
 
 
@@ -207,86 +210,44 @@ function App() {
     return (
     <div className='app'>
       <div className='background'>
-      <button id="musicToggle"onClick={toggleMusic}>
-          {isPlaying ? '🔊 음악 끄기' : '🔇 음악 켜기'}
-        </button>
-        {
-          ((ex) => {
-          let result;
-          if(mode==="티어"){
-            result = <>
-            <Pick 
-              summoner={summoner}
-              sumPeople={sumPeople}
-              aTeam={aTeam}
-              bTeam={bTeam}
-              balanced={balanced}
-              allTier={allTier}
-              tierPoint={tierPoint}
-              settingATeam={settingATeam}
-              settingBTeam = {settingBTeam}
-              setSettingATeam={setSettingATeam}
-              setSettingBTeam={setSettingBTeam}
-              hide={hide}
-            />
-            <Community
-              summoner={summoner}
-              onCreate={onCreate}
-              onDelete={onDelete}
-              allTier={allTier}
-              sumPeople={sumPeople}
-              onUpdate={onUpdate}
-              balanced={balanced}
-              fixedMem={fixedMem}
-              setSumPeople={setSumPeople}
-              checkedList={checkedList}
-              setCheckedList={setCheckedList}
-              setSummoner={setSummoner}
-              hide={hide}
-            />
-          </>
+        <myContext.Provider value={{
+          summoner,
+          sumPeople,
+          aTeam,
+          bTeam,
+          balanced,
+          allTier,
+          allPoint,
+          tierPoint,
+          settingATeam,
+          settingBTeam,
+          setSettingATeam,
+          setSettingBTeam,
+          hide,
+          mode,
           
-          } else if(mode==="포인트") {
-            result = <>
-            <Pick 
-              summoner={summoner}
-              sumPeople={sumPeople}
-              aTeam={aTeam}
-              bTeam={bTeam}
-              balanced={balanced}
-              allTier={allPoint}
-              tierPoint={point}
-              settingATeam={settingATeam}
-              settingBTeam = {settingBTeam}
-              setSettingATeam={setSettingATeam}
-              setSettingBTeam={setSettingBTeam}
-              hide={hide}
-            />
-            <Community
-              summoner={summoner}
-              onCreate={onCreate}
-              onDelete={onDelete}
-              allTier={allPoint}
-              sumPeople={sumPeople}
-              onUpdate={onUpdate}
-              balanced={balanced}
-              fixedMem={fixedMem}
-              setSumPeople={setSumPeople}
-              checkedList={checkedList}
-              setCheckedList={setCheckedList}
-              setSummoner={setSummoner}
-              hide={hide}
-            />
-          </>
-          }
-          return result;
-          })()
-        }
-        <button id="hideBtn" onClick={onClickHideBtn}>{hide==="hide" ? `🔒`: `🔓`}</button>
-        <select id="mode" type="text" onChange={modeChange}>
-          <option value="티어">티어</option>
-          <option value="포인트">포인트</option>
-        </select>
+          onCreate,
+          onDelete,
+          onUpdate,
+          fixedMem,
+          setSumPeople,
+          checkedList,
+          setCheckedList,
+          setSummoner
+        }}>
+          <button id="musicToggle"onClick={toggleMusic}>
+            {isPlaying ? '🔊 음악 끄기' : '🔇 음악 켜기'}
+          </button>
+          
+          <Pick />
+          <Community />
+          
+          <button id="hideBtn" onClick={onClickHideBtn}>{hide==="hide" ? `🔒`: `🔓`}</button>
+          <select id="mode" type="text" onChange={modeChange}>
+            <option value="티어">티어</option>
+            <option value="포인트">포인트</option>
+          </select>
+        </myContext.Provider>
       </div>
     </div>
   )

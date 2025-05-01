@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Summoner from '../component/Summoner';
 import '../style/Community.css';
+import { myContext } from '../App';
 
-const Community = ({onCreate, onDelete, onUpdate, summoner, allTier, sumPeople, balanced, fixedMem, setSumPeople, checkedList, setCheckedList,setSummoner, hide}) => {
 
+const Community = () => {
+  const {onCreate, onDelete, onUpdate, summoner, allTier, allPoint, sumPeople, balanced,
+    fixedMem, setSumPeople, checkedList, setCheckedList,setSummoner, hide} = useContext(myContext);
   const [addMemBtn, setAddMemBtn] = useState("OFF");
   const [editBtn, setEditBtn] = useState("추가 가능한 플레이어");
   const [add, setAdd] = useState(0);
@@ -131,11 +134,6 @@ const Community = ({onCreate, onDelete, onUpdate, summoner, allTier, sumPeople, 
             return <Summoner 
             key={summonerInfor.id} 
             {...summonerInfor} 
-            allTier={allTier} 
-            onDelete={onDelete}
-            onUpdate={onUpdate}
-            balanced={balanced}
-            hide={hide}
             />
           })
         }

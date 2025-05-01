@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import '../style/Pick.css';
+import { myContext } from '../App';
 
-const Pick = ({ summoner, aTeam, bTeam, balanced, allTier, tierPoint, settingATeam, settingBTeam, setSettingATeam, setSettingBTeam,hide }) => {
 
+const Pick = () => {
+  const { mode, allPoint, summoner, aTeam, bTeam, balanced, allTier, tierPoint, settingATeam, settingBTeam, setSettingATeam, setSettingBTeam,hide } = useContext(myContext);
   const onclickBalance = () => {
     // 모든 소환사의 정보가 입력되었는지 확인
     const allFilled = summoner.every(player => player.sumName !== "");
@@ -48,7 +50,9 @@ const Pick = ({ summoner, aTeam, bTeam, balanced, allTier, tierPoint, settingATe
                   </div>
                   {
                     hide=='hide' ? null :
-                    player.id >=0 ? <div>{allTier[player.tier]}</div> : null
+                    player.id >=0 ? <div>{
+                        mode==="티어" ? allTier[player.tier] : allPoint[player.tier]
+                      }</div> : null
                   }
                 </div>
             ))
@@ -69,7 +73,9 @@ const Pick = ({ summoner, aTeam, bTeam, balanced, allTier, tierPoint, settingATe
                   </div>
                   {
                     hide=='hide' ? null :
-                    player.id >=0 ? <div>{allTier[player.tier]}</div> : null
+                    player.id >=0 ? <div>{
+                        mode==="티어" ? allTier[player.tier] : allPoint[player.tier]
+                      }</div> : null
                   }
                 </div>
             ))
