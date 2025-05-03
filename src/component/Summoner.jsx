@@ -10,8 +10,8 @@ const Summoner = ({id, sumName, tier}) => {
 
   const [gameName, setGamename] = useState(sumName || "");
     const nameChange = (e)=>{
-    setGamename(e.target.value);
-  }
+      setGamename(e.target.value);
+    }
 
   const [gameTier, setGametier] = useState(tier || 0);
   const tierChange = (e)=>{

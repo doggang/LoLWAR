@@ -2,18 +2,20 @@ import { useEffect, useState, useContext } from "react";
 import Summoner from '../component/Summoner';
 import '../style/Community.css';
 import { myContext } from '../App';
+import FixedMem from "./FixedMem";
 
 
 const Community = () => {
   const {onCreate, onDelete, onUpdate, summoner, allTier, allPoint, sumPeople, balanced,
     fixedMem, setSumPeople, checkedList, setCheckedList,setSummoner, hide,
     //고멤함수 아래
-    fixedOnCreate
+    fixedOnCreate,fixedMode,setFixedMode,fixedOnUpdate
   } = useContext(myContext);
   const [addMemBtn, setAddMemBtn] = useState("OFF");
-  const [editBtn, setEditBtn] = useState("");
   const [add, setAdd] = useState(0);
-  
+  const [fixedName, setFixedName] = useState("");
+  const [fixedId, setFixedId] = useState();
+  const [fixedPoint, setFixedPoint] = useState();
 
   const onChangeMem = (sumName, id, tier, e) => {
   // 체크박스의 체크 상태 가져오기
@@ -57,15 +59,17 @@ const Community = () => {
     }
   }
   const onClickEdit = (e)=>{
-    if(editBtn=="normal"){
-      setEditBtn("edit");
+    if(fixedMode=="normal"){
+      setFixedMode("edit");
     }else{
-      setEditBtn("normal");
+      setFixedMode("normal");
     }
+
+    fixedOnUpdate();
   }
   const onClickEditExit = (e)=>{
-    if(editBtn=="normal"){
-      setEditBtn("d");
+    if(fixedMode=="normal"){
+      setFixedMode("edit");
     }
   }
   useEffect(()=>{
@@ -88,41 +92,86 @@ const Community = () => {
     hasCommonId = false;
      },[add])
 
+     const fixedNameChange = (e)=>{
+      setFixedName(e.target.value);
+    }
+
+    const fixedPointChange = (e)=>{
+      setFixedPoint(e.target.value);
+    }
+
+     useEffect(()=>{
+      // fixedOnUpdate(fixedId, fixedName,fixedPoint);
+    },[fixedId, fixedName, fixedPoint])
+
   return (
     <div id="community">
       {
         addMemBtn==="ON"
         ?<div id="mem">
           <button id="memCloseBtn" onClick={ ()=>{onClickEditExit(); OnClickAddMemBtn();}} >X</button>
-          <div id="memTitle">{editBtn=="normal"?"수정하기":"추가하기"}</div>
+          <div id="memTitle">{fixedMode=="normal"?"수정하기":"추가하기"} </div>
           <div id="memDetailWrapCover">
+          
           {
-            fixedMem.map((summ, key) => (
+            fixedMode=="normal"?
+              // 수정 버전 (고멤 추가 O)
+              fixedMem.map((summ, key) => (
+                  <FixedMem 
+                    key={summ.id}
+                    {...summ}  
+                    fixedId={fixedId}
+                    setFixedId={setFixedId}
+                    fixedName={fixedName}
+                    setFixedName={setFixedName}
+                    fixedPoint={fixedPoint}
+                    setFixedPoint={setFixedPoint}
+                    onChangeMem={onChangeMem}
+                    allPoint={allPoint}
+                    fixedOnUpdate={fixedOnUpdate}
+                    fixedMem={fixedMem}
+                  />
+
+              )):
+              // 일반 버전 (고멤 추가 X)
               
-              <label className="memDetailWrap" key={key}>
-              <input 
-                onChange={(e) => onChangeMem(summ.sumName, summ.id, summ.tier, e)} 
-                className="memChkbox" 
-                type="checkbox" 
-                id={summ.sumName}
-              />                <div className="memImg" htmlFor={summ.sumName}></div>
-                <div className="memName" htmlFor={summ.sumName}>{summ.sumName}</div>
-              </label>
-
-            ))
-
-
-          }
-            
-            
+              fixedMem.map((summ, key) => (
+                <label className="memDetailWrap" key={key}>
+                <input 
+                  onChange={(e) => onChangeMem(summ.sumName, summ.id, summ.tier, e)} 
+                  className="memChkbox" 
+                  type="checkbox" 
+                  id={summ.sumName}
+                />                <div className="memImg" htmlFor={summ.sumName}></div>
+                  <div className="memName" htmlFor={summ.sumName}>{summ.sumName}</div>
+                 </label>
+              ))
+            }
+          
 
 
           </div>
           <div id="memBtnWrap">
-            <button onClick={()=>{
-               onClickEdit(); fixedOnCreate();} } className="memBtn">{editBtn=="normal"?"저장하기":"수정하기"}</button>
-            <button onClick={()=>{
-              onClickAdd(); addBtn();}} className="memBtn">추가하기</button>
+          {
+            fixedMode=="normal"
+              ?
+                <button onClick={()=>{
+                  onClickEdit(); fixedOnUpdate(fixedId, fixedName,fixedPoint);}} className="memBtn">저장하기
+                </button>
+              :
+                <button onClick={()=>{
+                    onClickEdit();}} className="memBtn">수정하기
+                </button>
+          }
+            {
+              fixedMode=="normal"?
+                <button onClick={()=>{
+                  fixedOnCreate();}} className="memBtn">고멤추가
+                </button>:
+                <button onClick={()=>{
+                  onClickAdd(); addBtn();}} className="memBtn">추가하기
+                </button>
+            }
           </div>
           
         </div>

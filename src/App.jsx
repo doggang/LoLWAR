@@ -170,12 +170,9 @@ function App() {
   }
 
   // ----------------------- 고멤 ------------------------ //
-  let fixedSummoner = [
-    { id: -15, sumName: "허수빈", tier: 1 },
-    { id: -25, sumName: "유영선", tier: 3 },
-  ];
+
   const fixedIdRef = useRef(-1); // 각 Summoner의 id
-  const [fixedMem, setFixedMem] = useState(fixedSummoner);  
+  const [fixedMem, setFixedMem] = useState([]);  
 
   // 고멤 추가함수(Create)
   const fixedOnCreate = () => {
@@ -183,20 +180,34 @@ function App() {
       const fixedNewSummoner = {
         id: fixedIdRef.current--,
         sumName: "",
-        tier: 0
+        tier: 0,
       };
       setFixedMem(prevSummoner => [fixedNewSummoner, ...prevSummoner]);
     
   };
-  const fixedOnUpdate=()=>{
+  const fixedOnUpdate=(targetId, gameName, gamePoint)=>{
     if(fixedMode=="normal"){
-      
+      setFixedMem(prevFixedSummoner =>
+        prevFixedSummoner.map(newFixedSummoner =>
+          newFixedSummoner.id === targetId
+            ? 
+              { ...newFixedSummoner, sumName: gameName, tier: gamePoint }
+            : 
+            newFixedSummoner //community에서 gameName, gameTier 업데이트 해주는거 작성해야함
+            )
+          );
     }
-    setFixedMode()
   }
-  useEffect(()=>{
-    console.log(fixedMem);
-  },[fixedMem])
+
+  // const onUpdate = (targetId, gameName, gameTier) => {
+  //   setSummoner(prevSummoner =>
+  //     prevSummoner.map(newSummoner =>
+  //       newSummoner.id === targetId
+  //         ? { ...newSummoner, sumName: gameName, tier: gameTier }
+  //         : newSummoner
+  //     )
+  //   );
+  // };
     // ----------------------- 고멤 ------------------------ //
   const [hide, setHide] = useState("see");
   const onClickHideBtn = (e)=>{
@@ -210,6 +221,7 @@ function App() {
       default: break;
     }
   }
+
     return (
     <div className='app'>
       <div className='background'>
@@ -239,7 +251,10 @@ function App() {
           setSummoner,
 
           //고멤함수
-          fixedOnCreate
+          fixedOnCreate,
+          fixedMode,
+          setFixedMode,
+          fixedOnUpdate
         }}>
           <button id="musicToggle"onClick={toggleMusic}>
             {isPlaying ? '🔊 음악 끄기' : '🔇 음악 켜기'}
