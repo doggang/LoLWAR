@@ -1,214 +1,214 @@
-/* Community */
-#community{
+/* Community.css (scaled 76.19%, excluding border & border-radius) */
+#community {
   background-color: rgb(5, 20, 31);
-  width: 320px;
-  height: 1050px;
-}
-#comTitle{
+  width: 244.8px;
+  height: 800px;
+  }
+  #comTitle {
   display: flex;
-  padding: 15px;
-  width: calc(100% - 30px);
-  height: 90px;
+  padding: 11.43px;
+  width: calc(100% - 22.86px);
+  height: 68.57px;
   border-bottom: 1px solid rgba(252, 253, 224, 0.243);
-}
-#comTitleImg{
+  }
+  #comTitleImg {
   background-image: url("../assets/icon.jpg");
   background-size: cover;
   border-radius: 70%;
-  width: 85px;
-  height: 85px;
-}
-#comTitleStateCover{
-  width: 175px;
-  margin: 20px 15px;
-}
-#comTitleName{
-  width: 165px;
+  width: 64.76px;
+  height: 64.76px;
+  }
+  #comTitleStateCover {
+  width: 133.33px;
+  margin: 15.24px 11.43px;
+  }
+  #comTitleName {
+  width: 125.71px;
   color: rgba(251, 251, 235, 0.928);
   background-color: transparent;
-  font-size: 21px;
-  border: none;
-}
-#comTitleState{
   font-size: 16px;
+  border: none;
+  }
+  #comTitleState {
+  font-size: 12.19px;
   color: #009F3F;
-  margin: 6px 0px;
-}
-.communityTab{
+  margin: 4.57px 0;
+  }
+  .communityTab {
   display: flex;
   justify-content: space-between;
   color: rgba(251, 251, 235, 0.928);
   background-color: rgb(3, 10, 16);
-  width: calc(100% - 40px);
-  height: 40px;
-  line-height: 40px;
-  padding: 0 20px;
-}
-#addBtn{
+  width: calc(100% - 28px);
+  height: 30.48px;
+  line-height: 30.48px;
+  padding: 0 14px;
+  }
+
+  #communityTabPerson{
+    font-size: 14px;  
+  }
+
+  #addBtn {
   position: relative;
-  top: 3.5px;
+  top: 2.67px;
   background-color: #1e252e;
   color: white;
   border: 2px solid #d4af37;
-  font-size: 16px;
-  height: 33px;
-  width: 100px;
+  font-size: 12.19px;
+  height: 25.14px;
+  width: 76.19px;
   border-radius: 6px;
-}
-#addBtn:hover{
+  }
+  #addBtn:hover {
   cursor: pointer;
   background-color: #0f1217;
   color: rgb(211, 211, 211);
   border: 2px solid #7b6621;
-}
-
-#fixedAddBtn{
+  }
+  #fixedAddBtn {
   position: relative;
-  right: -15px;
-  top: 3.5px;
+  right: -11.43px;
+  top: 2.67px;
   background-color: #1e252e;
   color: white;
   border: 2px solid #d4af37;
-  font-size: 16px;
-  height: 33px;
-  width: 50px;
+  font-size: 12.19px;
+  height: 25.14px;
+  width: 38.10px;
   border-radius: 6px;
-}
-
-#fixedAddBtn:hover{
+  }
+  #fixedAddBtn:hover {
   cursor: pointer;
   background-color: #0f1217;
   color: rgb(211, 211, 211);
   border: 2px solid #7b6621;
-}
-
-/*-----------고멤 추가 CSS------------ */
-#mem{
+  }
+  #mem {
   position: absolute;
-  right:700px;
-  top: 150px;
-  width: 500px;
-  height: 850px;
+  right: 533.33px;
+  top: 114.29px;
+  width: 380.95px;
+  height: 647.62px;
   background-color: #010A13;
   border: 2px solid #463714;
   border-radius: 5px;
-}
-#memCloseBtn{
+  }
+  #memCloseBtn {
   position: relative;
-  left: 460px;
-  top: -15px;
+  left: 350.48px;
+  top: -11.43px;
   background-color: #1e252e;
   color: white;
   border: 2px solid #d4af37;
-  font-size: 20px;
-  height: 50px;
-  width: 50px;
+  font-size: 15.24px;
+  height: 38.10px;
+  width: 38.10px;
   border-radius: 100%;
-}
-#memCloseBtn:hover{
+  }
+  #memCloseBtn:hover {
   cursor: pointer;
   background-color: #151920;
   border: 2px solid #a5882a;
-}
-#memTitle{
+  }
+  #memTitle {
   color: #F0E6D2;
-  font-size: 24px;
+  font-size: 18.29px;
   text-align: center;
-  padding: 0 0 40px;
-}
-#memDetailWrapCover{
+  padding: 0 0 30.48px;
+  }
+  #memDetailWrapCover {
   width: 100%;
-  height: 630px;
+  height: 480px;
   overflow-y: auto;
-}
-.memDetailWrap{
-  padding: 10px 30px;
+  }
+  .memDetailWrap {
+  padding: 7.62px 22.86px;
   display: flex;
-  gap: 20px;
-  font-size: 18px;
+  gap: 15.24px;
+  font-size: 13.71px;
   color: white;
   border-bottom: 1px solid rgba(128, 128, 128, 0.1);
-}
-.memDetailWrap:hover{
+  }
+  .memDetailWrap:hover {
   background-color: #181d24;
   cursor: pointer;
-}
-.memChkbox{
+  }
+  .memChkbox {
   border-color: #846E3F;
-  width: 20px;
-}
-.memImg{
+  width: 15.24px;
+  }
+  .memImg {
   background-image: url("../assets/sumIcon.jpg");
   background-size: cover;
-  width: 40px;
-  height: 40px;
+  width: 30.48px;
+  height: 30.48px;
   border-radius: 100%;
-}
-.memName{
-  line-height: 40px;
-  width: 150px;
+  }
+  .memName {
+  line-height: 30.48px;
+  width: 114.29px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-#memBtnWrap{
+  }
+  #memBtnWrap {
   position: relative;
-  left: 90px;
-}
-.memBtn{
+  left: 68.57px;
+  }
+  .memBtn {
   position: relative;
-  top: 28px;
+  top: 21.33px;
   background-color: #1e252e;
   color: white;
   border: 2px solid #d4af37;
-  font-size: 20px;
-  height: 45px;
-  width: 120px;
-  margin: 0 20px;
-}
-.memBtn:hover{
+  font-size: 15.24px;
+  height: 34.29px;
+  width: 91.43px;
+  margin: 0 15.24px;
+  }
+  .memBtn:hover {
   cursor: pointer;
   background-color: #151920;
   border: 2px solid #a5882a;
-
-}
-.fixedNameEdit{
+  }
+  .fixedNameEdit {
   background-color: #1e252e;
   color: white;
   border: 2px solid #d4af37;
-  font-size: 18px;
-  height: 30px;
+  font-size: 13.71px;
+  height: 22.86px;
   border-radius: 6px;
-  width: 138px;
-  padding: 3px 6px;
-}
-.fixedTierSelect {
+  width: 105.14px;
+  padding: 2.29px 4.57px;
+  }
+  .fixedTierSelect {
   background-color: #1e252e;
   color: white;
   border: 2px solid #d4af37;
-  font-size: 16px;
-  height: 37px;
-  width: 100px;
+  font-size: 12.19px;
+  height: 28.24px;
+  width: 76.19px;
   border-radius: 6px;
   text-align: center;
-}
-.fixedTier{
+  }
+  .fixedTier {
   color: #e1ded4;
-  line-height: 40.01px;
-  margin-left: 10px;
-}
-.FixedDelBtn{
+  line-height: 30.48px;
+  margin-left: 7.62px;
+  }
+  .FixedDelBtn {
   position: relative;
-  top: 3px;
-  font-size: 13px;
-  width: 30px;
-  height: 30px;
+  top: 2.29px;
+  font-size: 9.90px;
+  width: 22.86px;
+  height: 22.86px;
   border: none;
   border-radius: 3px;
-}
-.FixedDelBtn:hover{
+  }
+  .FixedDelBtn:hover {
   cursor: pointer;
   background-color: rgb(163, 163, 163);
   border-radius: 3px;
   border: none;
-}
+  }

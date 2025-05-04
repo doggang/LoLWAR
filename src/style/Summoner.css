@@ -1,58 +1,60 @@
-.sumWrap{
+/* Summoner.css */
+.sumWrap {
   display: flex;
-  justify-content:left;
-  padding: 13px 0px 3px 20px;
-  width: calc(100% - 20px);
-}
-.sumTitleImg{
+  justify-content: left;
+  padding: 9.905px 0 2.286px 15.238px;
+  width: calc(100% - 15.238px);
+  }
+  .sumTitleImg {
   background-image: url("../assets/sumIcon.jpg");
   background-size: cover;
   border-radius: 70%;
-  width: 70px;
-  height: 70px;
-}
-.sumNameWrap{
-  width: 130px;
-  padding: 0 15px;
-}
-.sumName{
+  width: 53.333px;
+  height: 53.333px;
+  }
+  .sumNameWrap {
+  width: 99.048px;
+  padding: 0 11.429px;
+  }
+  .sumName {
   background-color: #1e252e;
   color: white;
   border: 2px solid #d4af37;
-  padding: 10px;
-  font-size: 16px;
-  height: 10px;
-  width: 150px;
-  border-radius: 6px;}
-.tierSelect {
-  background-color: #1e252e;
-  color: white;
-  border: 2px solid #d4af37;
-  padding: 0 10px;
-  font-size: 16px;
-  margin-top: 5px;
-  height: 30px;
-  width: 172px;
+  padding: 7.619px;
+  font-size: 12.1905px;
+  height: 7.619px;
+  width: 114.286px;
   border-radius: 6px;
-}
-
-.tierOption {
+  }
+  .tierSelect {
   background-color: #1e252e;
   color: white;
-}
-.delBtn{
+  border: 2px solid #d4af37;
+  padding: 0 7.619px;
+  font-size: 12.1905px;
+  margin-top: 3.8095px;
+  height: 22.857px;
+  width: 131.048px;
+  border-radius: 6px;
+  }
+  .tierOption {
+  background-color: #1e252e;
+  color: white;
+  }
+  .delBtn {
   position: relative;
-  top: 1px;
-  font-size: 13px;
-  right: -32px;
-  width: 30px;
-  height: 30px;
+  top: 0.762px;
+  font-size: 9.9048px;
+  right: -24.381px;
+  width: 22.857px;
+  height: 22.857px;
   border: none;
   border-radius: 3px;
-}
-.delBtn:hover{
+  }
+  .delBtn:hover {
   cursor: pointer;
   background-color: rgb(163, 163, 163);
   border-radius: 3px;
-  border: none;
-}
+  }
+  
+  

@@ -23,26 +23,26 @@
   background-repeat: no-repeat;
   background-size : cover;
   background-image: url("./assets/bgimg.png");
-  width: 1800px;
-  height: 1050px;
+  width: 1371px;
+  height: 800px;
   margin: auto auto 0 auto;   
 
 }
 
 .app-footer {
-  width: 1800px;    
+  width: 1371px;    
   margin: 0 auto auto auto; 
   background: rgba(30, 37, 46, 0.9);
   border: none;
-  padding: 8px 0;
+  padding: 6.01px 0;
   text-align: center;
   color: #fff;
-  font-size: 14px;
+  font-size: 10.6px;
   border-top: 1px solid #444;
 }
 
 .app-footer .footer-content p {
-  margin: 2px 0;
+  margin: 1.523px 0;
   font-family: "lolfont";
 }
 
@@ -51,39 +51,39 @@
 .sumWrap{
   display: flex;
   justify-content:left;
-  padding: 13px 0px 3px 20px;
+  padding: 9.9px 0px 2.285px 15.238px;
   width: calc(100% - 20px);
 }
 .sumTitleImg{
   background-image: url("./assets/sumIcon.jpg");
   background-size: cover;
   border-radius: 70%;
-  width: 70px;
-  height: 70px;
+  width: 53.33px;
+  height: 53.33px;
 }
 .sumNameWrap{
-  width: 130px;
-  padding: 0 15px;
+  width: 99.04px;
+  padding: 0 11.428px;
 }
 .sumName{
   background-color: #1e252e;
   color: white;
   border: 2px solid #d4af37;
-  padding: 10px;
-  font-size: 16px;
-  height: 10px;
-  width: 150px;
+  padding: 7.619px;
+  font-size: 12.19px;
+  height: 7.619px;
+  width: 114.285px;
   border-radius: 6px;}
 
 .tierSelect {
   background-color: #1e252e;
   color: white;
   border: 2px solid #d4af37;
-  padding: 0 10px;
-  font-size: 16px;
-  margin-top: 5px;
-  height: 30px;
-  width: 172px;
+  padding: 0 7.619px;
+  font-size: 12.19px;
+  margin-top: 3.8px;
+  height: 22.857px;
+  width: 131.04px;
   border-radius: 6px;
 }
 
@@ -93,11 +93,11 @@
 }
 .delBtn{
   position: relative;
-  top: 1px;
-  font-size: 13px;
-  right: -32px;
-  width: 30px;
-  height: 30px;
+  top: 0.76px;
+  font-size: 9.9px;
+  right: -24.38px;
+  width: 22.857px;
+  height: 22.857px;
   border: none;
   border-radius: 3px;
 }
@@ -110,15 +110,15 @@
 
 #musicToggle{
   position: absolute; 
-  top: 50px; 
-  right: 370px; 
+  top: 38.095px; 
+  right: 281.9px; 
   z-index: 1000;
   background-color: #1e252e;
   color: white;
   border: 2px solid #d4af37;
-  font-size: 16px;
-  height: 33px;
-  width: 100px;
+  font-size: 12.19px;
+  height: 25.143px;
+  width: 76.19px;
   border-radius: 6px;
 }
 #musicToggle:hover{
@@ -130,15 +130,15 @@
 
 #mode{
   position: absolute;
-  top: 50px; 
-  right: 480px; 
+  top: 38.095px; 
+  right: 365.71px; 
   z-index: 1000;
   background-color: #1e252e;
   color: white;
   border: 2px solid #d4af37;
-  font-size: 16px;
-  height: 33px;
-  width: 80px;
+  font-size: 12.19px;
+  height: 25.142px;
+  width: 60.952px;
   border-radius: 6px;
   text-align: center;
 }
@@ -150,15 +150,15 @@
 
 #hideBtn{
   position: absolute;
-  top: 50px; 
-  right: 570px; 
+  top: 38.095px; 
+  right: 434.285px; 
   z-index: 1000;
   background-color: #1e252e;
   color: white;
   border: 2px solid #d4af37;
-  font-size: 16px;
-  height: 33px;
-  width: 80px;
+  font-size: 12.19px;
+  height: 25.142px;
+  width: 60.952px;
   border-radius: 6px;
   text-align: center;
 }
