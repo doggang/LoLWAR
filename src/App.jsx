@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect, createContext} from 'react'
-import { SpeedInsights } from "@vercel/speed-insights/next"
 import './App.css'
 import Pick from './component/Pick'
 import Community from './component/Community'
@@ -278,7 +277,6 @@ function App() {
           <p>곡목: Classic Summoner's Rift Champion Select (Draft Pick), 아티스트: League of Legends (라이엇 게임즈 제공)</p>
         </div>
       </footer>
-      <Analytics />
     </div>
   )
 }
