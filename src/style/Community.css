@@ -15,16 +15,19 @@
   background-image: url("../assets/icon.jpg");
   background-size: cover;
   border-radius: 70%;
-  width: 100px;
+  width: 85px;
   height: 85px;
 }
 #comTitleStateCover{
-  width: calc(100% - 85px);
+  width: 175px;
   margin: 20px 15px;
 }
 #comTitleName{
+  width: 165px;
   color: rgba(251, 251, 235, 0.928);
-font-size: 21px;
+  background-color: transparent;
+  font-size: 21px;
+  border: none;
 }
 #comTitleState{
   font-size: 16px;

@@ -179,7 +179,8 @@ const Community = () => {
       <div id="comTitle">
         <div id="comTitleImg" />
         <div id="comTitleStateCover">
-          <div id="comTitleName">말년중위 김도현</div>
+          <input id="comTitleName" defaultValue="말년중위 김도현" />
+          {/* <div id="comTitleName">말년중위 김도현</div> */}
           <div id="comTitleState">● 온라인</div>
         </div>
       </div>

@@ -20,16 +20,12 @@ function App() {
     "마스터 0-149", "마스터 150-299", "마스터 300-449", "마스터 450-599", "마스터 600-749", "마스터 750-899", "마스터 900이상"
   ];
   const tierPoint = [1,2,3,4, 5,6,7,8, 9,10,11,12, 13,15,16,17 ,17,18,19,21 ,22,23,24,26 ,28,30,34,37 ,40,43,46,48, 50,52,54];
-  
   const [mode, setMode] = useState("티어");
   const allPoint = ["1 Point","2 Point","3 Point","4 Point","5 Point","6 Point","7 Point","8 Point","9 Point","10 Point"];
-  const point = [1,2,3,4,5,6,7,8,9,10];
   const [checkedList, setCheckedList] = useState([]);
-  const [fixedMode,setFixedMode] = useState("normal");
   const idRef = useRef(0); // 각 Summoner의 id
   const [sumPeople, setSumPeople] = useState(0); //community 창 속 소환사의 수
   const [summoner, setSummoner] = useState([]); // 소환사 정보 객체(community에 나오는 정보)
-  const [settingSummoner, setSettingSummoner] = useState([]); // 소환사 정보 객체(이 state를 이용하여 ateam, bteam 밸런스 맞춤)
   const [aTeam, setATeam] = useState([0,0,0,0,0]); //추가된 소환사 A팀 정보
   const [bTeam, setBTeam] = useState([0,0,0,0,0]); //추가된 소환사 B팀 정보
   const [settingATeam, setSettingATeam] = useState([0,0,0,0,0]); //밸런스가 맞춰진 A팀 정보(pick창에 나옴)
@@ -49,15 +45,12 @@ function App() {
       alert("최대 10명까지만 선택할 수 있습니다.");
     }
   };
-  
 
   // 소환사 정보 Pick창에 출력(Read)
   // 이 웹사이트의 핵심 서비스 => 티어를 바탕으로 밸런스있게 짜주는 역할
   const balanced = () => {
     // 랜덤성과 밸런스를 동시에 고려하는 알고리즘
-    const sortedSummoners = [...summoner]
-      .sort((a, b) => b.tier - a.tier);
-  
+    const sortedSummoners = [...summoner].sort((a, b) => b.tier - a.tier);
     let attempts = 0;
     let bestTeamDiff = Infinity;
     let bestATeam = [];
@@ -79,7 +72,7 @@ function App() {
         if (newATeam.length < 5 && (aTeamPoints <= bTeamPoints || newBTeam.length >= 5)) {
           newATeam.push(summoner);
           aTeamPoints += tierValue;
-        } else if (newBTeam.length < 5) {
+        }else if (newBTeam.length < 5) {
           newBTeam.push(summoner);
           bTeamPoints += tierValue;
         }
@@ -97,7 +90,6 @@ function App() {
   
       // 거의 완벽한 밸런스를 찾으면 즉시 종료
       if (bestTeamDiff <= 5) break;
-  
       attempts++;
     }
   
@@ -105,7 +97,7 @@ function App() {
     while(bestATeam.length < 5) {
       bestATeam.push(0);
     }
-    
+
     while(bestBTeam.length < 5) {
       bestBTeam.push(0);
     }
@@ -170,48 +162,38 @@ function App() {
   }
 
   // ----------------------- 고멤 ------------------------ //
+  // 1) localStorage에서 불러와서 초기화
+  const [fixedMem, setFixedMem] = useState(() => {
+    const saved = localStorage.getItem('fixedMem');
+    return saved ? JSON.parse(saved) : [];
+  });
 
-  const fixedIdRef = useRef(-1); // 각 Summoner의 id
-  const [fixedMem, setFixedMem] = useState([]);  
+  const [fixedMode, setFixedMode] = useState('normal');
+  const fixedIdRef = useRef(-1);
 
-  // 고멤 추가함수(Create)
+  // 2) fixedMem 변경 시 항상 저장
+  useEffect(() => {
+    localStorage.setItem('fixedMem', JSON.stringify(fixedMem));
+  }, [fixedMem]);
+
   const fixedOnCreate = () => {
-    
-      const fixedNewSummoner = {
-        id: fixedIdRef.current--,
-        sumName: "",
-        tier: 0,
-      };
-      setFixedMem(prevSummoner => [fixedNewSummoner, ...prevSummoner]);
+    const newItem = { id: fixedIdRef.current--, sumName: '', tier: 0 };
+    setFixedMem(prev => [newItem, ...prev]);
   };
 
-
-  const fixedOnUpdate=(targetId, gameName, gamePoint)=>{
-    if(fixedMode=="normal"){
-      setFixedMem(prevFixedSummoner =>
-        prevFixedSummoner.map(newFixedSummoner =>
-          newFixedSummoner.id === targetId
-            ? 
-              { ...newFixedSummoner, sumName: gameName, tier: gamePoint }
-            : 
-            newFixedSummoner
-            )
-          );
+  const fixedOnUpdate = (targetId, name, tier) => {
+    if (fixedMode === 'normal') {
+      setFixedMem(prev =>
+        prev.map(item =>
+          item.id === targetId ? { ...item, sumName: name, tier } : item
+        )
+      );
     }
-  }
+  };
 
   const fixedOnDelete = (targetId) => {
-    setFixedMem(prevFixedSummoner =>
-      prevFixedSummoner.filter(sumInfor => targetId !== sumInfor.id)
-    );
+    setFixedMem(prev => prev.filter(item => item.id !== targetId));
   };
-
-  // const onDelete = (targetId) => {
-  //   setSumPeople(prevSumPeople => prevSumPeople - 1);
-  //   setSummoner(prevSummoner =>
-  //     prevSummoner.filter(sumInfor => targetId !== sumInfor.id)
-  //   );
-  // };
     // ----------------------- 고멤 ------------------------ //
   const [hide, setHide] = useState("see");
   const onClickHideBtn = (e)=>{
@@ -259,7 +241,7 @@ function App() {
           fixedMode,
           setFixedMode,
           fixedOnUpdate,
-          
+          fixedOnDelete
         }}>
           <button id="musicToggle"onClick={toggleMusic}>
             {isPlaying ? '🔊 음악 끄기' : '🔇 음악 켜기'}
