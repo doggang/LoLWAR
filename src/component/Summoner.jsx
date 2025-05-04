@@ -34,7 +34,7 @@ const Summoner = ({id, sumName, tier}) => {
         {
           
           hide=='hide' ? null :
-            id >=0 ?<select className="tierSelect" onChange={tierChange} >
+            <select className="tierSelect" onChange={tierChange} >
               {
                 mode === "티어" ? allTier.map((alltier, index)=>{
                   return <option key={index} name="selectTier" value={index} >{alltier}</option>
@@ -43,7 +43,7 @@ const Summoner = ({id, sumName, tier}) => {
                 })
                 
               }
-          </select> :null
+          </select>
         }
       </div>
       {/* 삭제 버튼 클릭 시 해당 ID 전달 */}

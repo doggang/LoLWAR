@@ -183,8 +183,9 @@ function App() {
         tier: 0,
       };
       setFixedMem(prevSummoner => [fixedNewSummoner, ...prevSummoner]);
-    
   };
+
+
   const fixedOnUpdate=(targetId, gameName, gamePoint)=>{
     if(fixedMode=="normal"){
       setFixedMem(prevFixedSummoner =>
@@ -193,19 +194,22 @@ function App() {
             ? 
               { ...newFixedSummoner, sumName: gameName, tier: gamePoint }
             : 
-            newFixedSummoner //community에서 gameName, gameTier 업데이트 해주는거 작성해야함
+            newFixedSummoner
             )
           );
     }
   }
 
-  // const onUpdate = (targetId, gameName, gameTier) => {
+  const fixedOnDelete = (targetId) => {
+    setFixedMem(prevFixedSummoner =>
+      prevFixedSummoner.filter(sumInfor => targetId !== sumInfor.id)
+    );
+  };
+
+  // const onDelete = (targetId) => {
+  //   setSumPeople(prevSumPeople => prevSumPeople - 1);
   //   setSummoner(prevSummoner =>
-  //     prevSummoner.map(newSummoner =>
-  //       newSummoner.id === targetId
-  //         ? { ...newSummoner, sumName: gameName, tier: gameTier }
-  //         : newSummoner
-  //     )
+  //     prevSummoner.filter(sumInfor => targetId !== sumInfor.id)
   //   );
   // };
     // ----------------------- 고멤 ------------------------ //
@@ -254,7 +258,8 @@ function App() {
           fixedOnCreate,
           fixedMode,
           setFixedMode,
-          fixedOnUpdate
+          fixedOnUpdate,
+          fixedOnDelete
         }}>
           <button id="musicToggle"onClick={toggleMusic}>
             {isPlaying ? '🔊 음악 끄기' : '🔇 음악 켜기'}

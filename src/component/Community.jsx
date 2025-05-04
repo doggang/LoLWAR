@@ -7,9 +7,9 @@ import FixedMem from "./FixedMem";
 
 const Community = () => {
   const {onCreate, onDelete, onUpdate, summoner, allTier, allPoint, sumPeople, balanced,
-    fixedMem, setSumPeople, checkedList, setCheckedList,setSummoner, hide,
+    fixedMem, setSumPeople, checkedList, setCheckedList,setSummoner, hide,mode,
     //고멤함수 아래
-    fixedOnCreate,fixedMode,setFixedMode,fixedOnUpdate
+    fixedOnCreate,fixedMode,setFixedMode,fixedOnUpdate,fixedOnDelete
   } = useContext(myContext);
   const [addMemBtn, setAddMemBtn] = useState("OFF");
   const [add, setAdd] = useState(0);
@@ -66,11 +66,14 @@ const Community = () => {
     }
 
     fixedOnUpdate();
+    setCheckedList([]);
+
   }
   const onClickEditExit = (e)=>{
     if(fixedMode=="normal"){
       setFixedMode("edit");
     }
+    setCheckedList([]);
   }
   useEffect(()=>{
 
@@ -92,13 +95,7 @@ const Community = () => {
     hasCommonId = false;
      },[add])
 
-     const fixedNameChange = (e)=>{
-      setFixedName(e.target.value);
-    }
-
-    const fixedPointChange = (e)=>{
-      setFixedPoint(e.target.value);
-    }
+     
 
      useEffect(()=>{
       // fixedOnUpdate(fixedId, fixedName,fixedPoint);
@@ -117,37 +114,38 @@ const Community = () => {
             fixedMode=="normal"?
               // 수정 버전 (고멤 추가 O)
               fixedMem.map((summ, key) => (
-                  <FixedMem 
-                    key={summ.id}
-                    {...summ}  
-                    fixedId={fixedId}
-                    setFixedId={setFixedId}
-                    fixedName={fixedName}
-                    setFixedName={setFixedName}
-                    fixedPoint={fixedPoint}
-                    setFixedPoint={setFixedPoint}
-                    onChangeMem={onChangeMem}
-                    allPoint={allPoint}
-                    fixedOnUpdate={fixedOnUpdate}
-                    fixedMem={fixedMem}
-                  />
+                <FixedMem
+                key={summ.id}
+                id={summ.id}
+                sumName={summ.sumName}
+                tier={summ.tier}
+                onChangeMem={onChangeMem}
+                allPoint={allPoint}
+                fixedOnUpdate={fixedOnUpdate}
+                mode={mode}
+                allTier={allTier}
+                fixedOnDelete={fixedOnDelete}
+              />
 
               )):
               // 일반 버전 (고멤 추가 X)
               
               fixedMem.map((summ, key) => (
                 <label className="memDetailWrap" key={key}>
-                <input 
-                  onChange={(e) => onChangeMem(summ.sumName, summ.id, summ.tier, e)} 
-                  className="memChkbox" 
-                  type="checkbox" 
-                  id={summ.sumName}
-                />                <div className="memImg" htmlFor={summ.sumName}></div>
+                  <input 
+                    onChange={(e) => onChangeMem(summ.sumName, summ.id, summ.tier, e)} 
+                    className="memChkbox" 
+                    type="checkbox" 
+                    id={summ.sumName}
+                  />                
+                  <div className="memImg" htmlFor={summ.sumName}></div>
                   <div className="memName" htmlFor={summ.sumName}>{summ.sumName}</div>
-                 </label>
+                  {mode==="티어" ? <p className="fixedTier">{allTier[summ.tier]}</p> : <p className="fixedTier">{allPoint[summ.tier]}</p>}
+                </label>
+                
               ))
             }
-          
+            
 
 
           </div>
@@ -172,6 +170,7 @@ const Community = () => {
                   onClickAdd(); addBtn();}} className="memBtn">추가하기
                 </button>
             }
+            
           </div>
           
         </div>

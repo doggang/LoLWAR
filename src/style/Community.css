@@ -143,6 +143,10 @@ font-size: 21px;
 }
 .memName{
   line-height: 40px;
+  width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 #memBtnWrap{
   position: relative;
@@ -169,18 +173,37 @@ font-size: 21px;
   background-color: #1e252e;
   color: white;
   border: 2px solid #d4af37;
-  font-size: 20px;
-  height: 45px;
-  width: 120px;
+  font-size: 18px;
+  height: 37px;
+  width: 150px;
 }
 .fixedTierSelect {
   background-color: #1e252e;
   color: white;
   border: 2px solid #d4af37;
-  padding: 0 10px;
   font-size: 16px;
-  margin-top: 5px;
-  height: 30px;
-  width: 172px;
+  height: 37px;
+  width: 100px;
   border-radius: 6px;
+  text-align: center;
+}
+.fixedTier{
+  color: #e1ded4;
+  line-height: 40.01px;
+  margin-left: 10px;
+}
+.FixedDelBtn{
+  position: relative;
+  top: 3px;
+  font-size: 13px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 3px;
+}
+.FixedDelBtn:hover{
+  cursor: pointer;
+  background-color: rgb(163, 163, 163);
+  border-radius: 3px;
+  border: none;
 }

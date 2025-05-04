@@ -50,9 +50,9 @@ const Pick = () => {
                   </div>
                   {
                     hide=='hide' ? null :
-                    player.id >=0 ? <div>{
+                    <div>{
                         mode==="티어" ? allTier[player.tier] : allPoint[player.tier]
-                      }</div> : null
+                      }</div>
                   }
                 </div>
             ))
@@ -73,9 +73,9 @@ const Pick = () => {
                   </div>
                   {
                     hide=='hide' ? null :
-                    player.id >=0 ? <div>{
+                    <div>{
                         mode==="티어" ? allTier[player.tier] : allPoint[player.tier]
-                      }</div> : null
+                      }</div>
                   }
                 </div>
             ))
