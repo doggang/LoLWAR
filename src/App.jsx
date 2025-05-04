@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, createContext} from 'react'
-import { Analytics } from "@vercel/analytics";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import './App.css'
 import Pick from './component/Pick'
 import Community from './component/Community'
