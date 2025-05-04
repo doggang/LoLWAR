@@ -7,6 +7,23 @@ export const myContext = createContext();
 
 function App() {
 
+  useEffect(() => {
+    // LOL ASCII Art
+    console.log(`%c
+     _      ____   _      
+    | |    / __ \\ | |    
+    | |   | |  | || |     
+    | |   | |  | || |    
+    | |___| |__| || |___ 
+    |______\\____/ |_____|   v1.0
+    `, 'color: #C8AA6E; font-size:12px; font-weight:bold;');
+
+    // 개발자 정보
+    console.log('%c📧 저의 메일입니다 ㅎㅎ! rlaehgusqp@naver.com', 'color:#black; font-size:13px;');
+    console.log('%c💻 Developer: 김도현',    'color:#black; font-size:13px;');
+    console.log('%c──────────────────────────', 'color:#C8AA6E;');
+    console.log('%c🚀 재미있게 즐겨주세요! 🚀', 'color:#7FB3D5; ');
+  }, []);
 
   const allTier = 
   [
@@ -134,7 +151,8 @@ function App() {
   const [audio, setAudio] = useState(null);
 
   useEffect(() => {
-    const newAudio = new Audio('./bgm.wav');
+    const url = new URL('../bgm.wav', import.meta.url).href;
+    const newAudio = new Audio(url);
     newAudio.loop = true;
     setAudio(newAudio);
 
@@ -144,16 +162,11 @@ function App() {
     };
   }, []);
 
-  // 음악 토글 함수
+  //음악 토글함수
   const toggleMusic = () => {
-    if (audio) {
-      if (isPlaying) {
-        audio.pause();
-      } else {
-        audio.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
+    if (!audio) return;
+    isPlaying ? audio.pause() : audio.play().catch(console.warn);
+    setIsPlaying(p => !p);
   };
   // ---------------------------------------------------------------------------------------음악
   
