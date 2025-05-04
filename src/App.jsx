@@ -259,7 +259,7 @@ function App() {
           fixedMode,
           setFixedMode,
           fixedOnUpdate,
-          fixedOnDelete
+          
         }}>
           <button id="musicToggle"onClick={toggleMusic}>
             {isPlaying ? '🔊 음악 끄기' : '🔇 음악 켜기'}
@@ -278,8 +278,8 @@ function App() {
       </div>
       <footer className="app-footer">
         <div className="footer-content">
-          <p>곡목: Classic Summoner's Rift Champion Select (Draft Pick)</p>
-          <p>아티스트: League of Legends (라이엇 게임즈 제공)</p>
+          <p>개발자 이메일 : rlaehgusqp@naver.com</p>
+          <p>곡목: Classic Summoner's Rift Champion Select (Draft Pick), 아티스트: League of Legends (라이엇 게임즈 제공)</p>
         </div>
       </footer>
     </div>
