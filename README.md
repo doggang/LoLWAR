@@ -1,10 +1,10 @@
 
 # LOL team balancing service v1.0
-> **소속 : 수도기계화보병사단 통신중대** <br/> **개발기간 : 2025.02.02 ~ 2025.03.19**
+> **소속 : 수도기계화보병사단 통신중대** <br/> **개발기간 : 2025.02.02 ~ 2025.05.05**
 
 ## 배포 주소
 
-> **개발 버전** : [https://doggang.github.io/LoLWAR/](https://doggang.github.io/LoLWAR/) <br>
+> **개발 버전** : [lolwar.vercel.app/](https://lolwar.vercel.app/) <br>
 
 ## 웹개발자 소개
 | 김도현 | 
