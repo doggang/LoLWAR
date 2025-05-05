@@ -37,6 +37,11 @@
   width: 131.048px;
   border-radius: 6px;
   }
+  .tierSelect:hover{
+    cursor: pointer;
+  background-color: #151920;
+  border: 2px solid #a5882a;
+  }
   .tierOption {
   background-color: #1e252e;
   color: white;
