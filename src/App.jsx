@@ -275,12 +275,10 @@ function App() {
           <Community />
           
           <button id="hideBtn" onClick={onClickHideBtn}>{hide==="hide" ? `🔒`: `🔓`}</button>
-          <label htmlFor="mode">
-            <select id="mode" type="text" onChange={modeChange}>
-              <option value="티어">티어</option>
-              <option value="포인트">포인트</option>
-            </select>
-          </label>
+          <select id="mode" type="text" onChange={modeChange}>
+            <option value="티어">티어</option>
+            <option value="포인트">포인트</option>
+          </select>
         </myContext.Provider>
         
       </div>

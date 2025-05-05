@@ -189,9 +189,7 @@ const Community = () => {
                 <img className="comTitleImg" src={icon} alt="최적화된 배경"  />
               </picture>
         <div id="comTitleStateCover">
-          <label htmlFor="comTitleName">
-            <input id="comTitleName" defaultValue="말년중위 김도현" />
-          </label>
+          <input id="comTitleName" defaultValue="말년중위 김도현" />
           {/* <div id="comTitleName">말년중위 김도현</div> */}
           <div id="comTitleState">● 온라인</div>
         </div>
