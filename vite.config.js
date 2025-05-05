@@ -1,12 +1,8 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import ViteGitHubPages from 'vite-plugin-gh-pages'; // 플러그인 import
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
 export default defineConfig({
+  // GitHub Pages처럼 서브폴더가 아니므로 base는 '/' (또는 생략) 상태면 OK
+  base: '/',
   plugins: [react()],
-  base: '/LoLWAR/', // 리포지토리 이름에 맞게 수정
-  build: {
-    outDir: 'dist',
-  },
-  // ViteGitHubPages가 자동으로 배포를 처리하도록 설정
-});
+})
