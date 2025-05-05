@@ -1,8 +1,9 @@
-import { useState, useRef, useEffect, createContext} from 'react'
-import './App.css'
-import Pick from './component/Pick'
-import Community from './component/Community'
-
+import { useState, useRef, useEffect, createContext} from 'react';
+import './App.css';
+import Pick from './component/Pick';
+import Community from './component/Community';
+import bgImgPng  from './assets/bgimg.png';
+import bgImgWebp from './assets/bgimgWebp.webp';
 export const myContext = createContext();
 
 function App() {
@@ -224,6 +225,16 @@ function App() {
     return (
     <div className='app'>
       <div className='background'>
+        
+      <picture id="bgImg">
+        {/* 브라우저가 WebP 지원 시 이걸 씀 */}
+        <source srcSet={bgImgWebp} type="image/webp" />
+        {/* 지원 안 할 때 PNG */}
+        <source srcSet={bgImgPng}  type="image/png"  />
+        {/* fallback 으로도 PNG */}
+        <img src={bgImgPng} alt="최적화된 배경"  />
+      </picture>
+        
         <myContext.Provider value={{
           summoner,
           sumPeople,
@@ -264,10 +275,12 @@ function App() {
           <Community />
           
           <button id="hideBtn" onClick={onClickHideBtn}>{hide==="hide" ? `🔒`: `🔓`}</button>
-          <select id="mode" type="text" onChange={modeChange}>
-            <option value="티어">티어</option>
-            <option value="포인트">포인트</option>
-          </select>
+          <label htmlFor="mode">
+            <select id="mode" type="text" onChange={modeChange}>
+              <option value="티어">티어</option>
+              <option value="포인트">포인트</option>
+            </select>
+          </label>
         </myContext.Provider>
         
       </div>

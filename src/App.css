@@ -20,15 +20,21 @@
   position: relative;
   display: flex;
   z-index: 1;
-  background-repeat: no-repeat;
-  background-size : cover;
-  background-image: url("./assets/bgimg.png");
+  
   width: 1371px;
   height: 800px;
   margin: auto auto 0 auto;   
 
 }
-
+#bgImg{
+  position: absolute;
+  z-index: -1;
+  background-repeat: no-repeat;
+  background-size : cover;
+  width: 1371px;
+  height: 800px;
+  margin: auto auto 0 auto;  
+}
 .app-footer {
   width: 1371px;    
   margin: 0 auto auto auto; 

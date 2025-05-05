@@ -27,7 +27,9 @@ const Pick = () => {
       <div id="roomTitle">
         <div id="roomTitleFirst">
           <div id="titleImg" />
-          <input id="rooTitleWord" defaultValue="말년중위 김도현 님의 게임" />
+          <label htmlFor="rootTitleWord">
+            <input id="rooTitleWord" defaultValue="말년중위 김도현 님의 게임" />
+          </label>
         </div>
         <div id="roomSubTitle">
           <p>소환사의 협곡</p>

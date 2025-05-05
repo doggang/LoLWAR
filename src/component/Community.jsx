@@ -4,6 +4,9 @@ import '../style/Community.css';
 import { myContext } from '../App';
 import FixedMem from "./FixedMem";
 
+import icon from '../assets/icon.jpg';
+import iconWebp from '../assets/iconWebp.webp';
+
 
 const Community = () => {
   const {onCreate, onDelete, onUpdate, summoner, allTier, allPoint, sumPeople, balanced,
@@ -177,9 +180,18 @@ const Community = () => {
         :null
       }
       <div id="comTitle">
-        <div id="comTitleImg" />
+        <picture className="comTitleImg">
+                {/* 브라우저가 WebP 지원 시 이걸 씀 */}
+                <source className="comTitleImg" srcSet={iconWebp} type="image/webp" />
+                {/* 지원 안 할 때 PNG */}
+                <source className="comTitleImg" srcSet={icon}  type="image/png"  />
+                {/* fallback 으로도 PNG */}
+                <img className="comTitleImg" src={icon} alt="최적화된 배경"  />
+              </picture>
         <div id="comTitleStateCover">
-          <input id="comTitleName" defaultValue="말년중위 김도현" />
+          <label htmlFor="comTitleName">
+            <input id="comTitleName" defaultValue="말년중위 김도현" />
+          </label>
           {/* <div id="comTitleName">말년중위 김도현</div> */}
           <div id="comTitleState">● 온라인</div>
         </div>
