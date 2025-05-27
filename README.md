@@ -4,7 +4,7 @@
 
 ## 배포 주소
 
-> **개발 버전** : [lolwar.vercel.app/](https://doggang.github.io/LoLWAR/) <br>
+> **개발 버전** : [https://doggang.github.io/LoLWAR/](https://doggang.github.io/LoLWAR/) <br>
 
 ## 웹개발자 소개
 | 김도현 | 
